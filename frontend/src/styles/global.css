@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+:root {
+  --main-color: #3cc368;
+  --secondary-color: #84e;
+  --bg-color: #201b2c;
+  --bg-secondary-color: #333;
+  --light-text-color: #fff;
+  --dark-text-color: #000;
+}
