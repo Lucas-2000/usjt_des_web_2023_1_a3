@@ -37,7 +37,31 @@ app.get("/usuarios", (req, res) => {
 
 app.get("/usuarios/:email", (req, res) => {});
 
-app.put("/usuarios/:id", (req, res) => {});
+app.put("/usuarios/:id", (req, res) => {
+  const { id } = req.params;
+
+  const { nome, email, senha, tipo, bio, estilo, disponibilidade, link } =
+    req.body;
+
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(senha, salt);
+
+  if (id === usuarios[id].id) {
+    usuarios[id] = {
+      nome,
+      email,
+      senha: hash,
+      tipo,
+      bio,
+      estilo,
+      disponibilidade,
+      link,
+    };
+    res.status(201).send(usuarios[id]);
+  } else {
+    res.status(404).send("Insira um id válido");
+  }
+});
 
 app.delete("/usuarios/:id", (req, res) => {});
 
