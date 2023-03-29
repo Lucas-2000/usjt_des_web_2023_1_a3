@@ -35,6 +35,8 @@ app.get("/usuarios", (req, res) => {
   res.send(usuarios);
 });
 
+app.get("/usuarios/:id", (req, res) => {});
+
 app.put("/usuarios/:id", (req, res) => {});
 
 app.delete("/usuarios/:id", (req, res) => {});
