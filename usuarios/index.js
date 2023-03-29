@@ -35,7 +35,7 @@ app.get("/usuarios", (req, res) => {
   res.send(usuarios);
 });
 
-app.get("/usuarios/:id", (req, res) => {});
+app.get("/usuarios/:email", (req, res) => {});
 
 app.put("/usuarios/:id", (req, res) => {});
 
