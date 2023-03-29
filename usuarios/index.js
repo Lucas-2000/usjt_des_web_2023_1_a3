@@ -31,7 +31,9 @@ app.post("/usuarios", (req, res) => {
   res.status(201).send(usuarios[idUsuario]);
 });
 
-app.get("/usuarios", (req, res) => {});
+app.get("/usuarios", (req, res) => {
+  res.send(usuarios);
+});
 
 app.put("/usuarios/:id", (req, res) => {});
 
