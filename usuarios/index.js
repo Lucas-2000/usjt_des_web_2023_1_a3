@@ -7,7 +7,6 @@ const app = express();
 app.use(bodyParser.json());
 
 const usuarios = {};
-let contador = 0;
 
 app.post("/usuarios", (req, res) => {
   const idUsuario = uuidv4();
@@ -17,7 +16,7 @@ app.post("/usuarios", (req, res) => {
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(senha, salt);
 
-  usuarios[contador] = {
+  usuarios[idUsuario] = {
     id: idUsuario,
     nome,
     email,
@@ -29,7 +28,7 @@ app.post("/usuarios", (req, res) => {
     link,
   };
 
-  res.status(201).send(usuarios[contador]);
+  res.status(201).send(usuarios[idUsuario]);
 });
 
 app.get("/usuarios", (req, res) => {});
