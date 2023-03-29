@@ -1,10 +1,36 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
+const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 app.use(bodyParser.json());
 
-app.post("/usuarios", (req, res) => {});
+const usuarios = {};
+let contador = 0;
+
+app.post("/usuarios", (req, res) => {
+  const idUsuario = uuidv4();
+  const { nome, email, senha, tipo, bio, estilo, disponibilidade, link } =
+    req.body;
+
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(senha, salt);
+
+  usuarios[contador] = {
+    id: idUsuario,
+    nome,
+    email,
+    senha: hash,
+    tipo,
+    bio,
+    estilo,
+    disponibilidade,
+    link,
+  };
+
+  res.status(201).send(usuarios[contador]);
+});
 
 app.get("/usuarios", (req, res) => {});
 
