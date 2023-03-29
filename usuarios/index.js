@@ -46,6 +46,9 @@ app.put("/usuarios/:id", (req, res) => {
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(senha, salt);
 
+  if (usuarios[id] === undefined)
+    return res.status(500).send("Insira um id válido");
+
   if (id === usuarios[id].id) {
     usuarios[id] = {
       nome,
@@ -57,9 +60,9 @@ app.put("/usuarios/:id", (req, res) => {
       disponibilidade,
       link,
     };
-    res.status(201).send(usuarios[id]);
+    return res.status(201).send(usuarios[id]);
   } else {
-    res.status(404).send("Insira um id válido");
+    return res.status(500).send("Erro na atualização");
   }
 });
 
