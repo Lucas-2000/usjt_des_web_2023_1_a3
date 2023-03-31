@@ -34,7 +34,7 @@ app.get("/usuarios", (req, res) => {
   res.send(usuarios);
 });
 
-app.get("/usuarios/:email", (req, res) => {});
+app.get("/usuarios/:email/:senha", (req, res) => {});
 
 app.put("/usuarios/:id", (req, res) => {
   const { id } = req.params;
