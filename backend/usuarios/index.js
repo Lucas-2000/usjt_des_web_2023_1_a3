@@ -1,10 +1,9 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 
 const usuarios = {};
 
@@ -66,7 +65,19 @@ app.put("/usuarios/:id", (req, res) => {
   }
 });
 
-app.delete("/usuarios/:id", (req, res) => {});
+app.delete("/usuarios/:id", (req, res) => {
+  const { id } = req.params;
+
+  if (usuarios[id] === undefined)
+    return res.status(500).send("Insira um id válido");
+
+  if (id === usuarios[id].id) {
+    delete usuarios[id];
+    return res.status(201).send("Usuário deletado");
+  } else {
+    return res.status(500).send("Erro no delete");
+  }
+});
 
 app.listen(4000, () => {
   console.log("Usuários executando na porta 4000");
