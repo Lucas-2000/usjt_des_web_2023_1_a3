@@ -14,23 +14,31 @@ export const Cadastro = () => {
     e.preventDefault();
 
     if (tipo === "M") {
-      fetch("http://localhost:4000/usuarios", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-          nome,
-          email,
-          senha,
-          tipo,
-          biografia,
-          estilo,
-          disponibilidade,
-          link,
-        }),
-      }).then((res) => {
-        console.log(res);
-        return res;
-      });
+      try {
+        fetch("http://localhost:4000/usuarios", {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({
+            nome,
+            email,
+            senha,
+            tipo,
+            biografia,
+            estilo,
+            disponibilidade,
+            link,
+          }),
+        }).then((res) => {
+          console.log(res);
+          if (!res.ok) {
+            return window.alert("Erro na inclusão, usuário já cadastrado");
+          }
+          window.alert("Usuário cadastrado com sucesso");
+          return res;
+        });
+      } catch (err) {
+        window.alert(`Erro: ${err.message}`);
+      }
     } else {
       try {
         fetch("http://localhost:4000/usuarios", {
