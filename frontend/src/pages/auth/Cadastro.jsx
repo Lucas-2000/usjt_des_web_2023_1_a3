@@ -74,11 +74,23 @@ export const Cadastro = () => {
         <form onSubmit={handleSubmitForm}>
           <h1>Faça seu cadastro</h1>
           <label>Nome:</label>
-          <input type="text" onChange={(e) => setNome(e.target.value)} />
+          <input
+            type="text"
+            onChange={(e) => setNome(e.target.value)}
+            required
+          />
           <label>Email:</label>
-          <input type="email" onChange={(e) => setEmail(e.target.value)} />
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
           <label>Senha:</label>
-          <input type="password" onChange={(e) => setSenha(e.target.value)} />
+          <input
+            type="password"
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
           <label>Tipo:</label>
           <input
             checked={tipo === "A"}
@@ -103,6 +115,7 @@ export const Cadastro = () => {
                 cols="30"
                 rows="10"
                 onChange={(e) => setBiografia(e.target.value)}
+                required
               ></textarea>
             </>
           ) : (
@@ -112,9 +125,10 @@ export const Cadastro = () => {
                 cols="30"
                 rows="10"
                 onChange={(e) => setBiografia(e.target.value)}
+                required
               ></textarea>
               <label>Estilo:</label>
-              <select onChange={(e) => setEstilo(e.target.value)}>
+              <select onChange={(e) => setEstilo(e.target.value)} required>
                 <option value="">Selecione uma opção</option>
                 <option value="Rock">Rock</option>
                 <option value="Sertanejo">Sertanejo</option>
@@ -127,9 +141,14 @@ export const Cadastro = () => {
               <input
                 type="text"
                 onChange={(e) => setDisponibilidade(e.target.value)}
+                required
               />
               <label>URL vídeo:</label>
-              <input type="text" onChange={(e) => setLink(e.target.value)} />
+              <input
+                type="text"
+                onChange={(e) => setLink(e.target.value)}
+                required
+              />
             </>
           )}
           <input type="submit" value="Cadastrar" />
