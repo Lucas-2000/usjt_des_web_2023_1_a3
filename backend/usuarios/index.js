@@ -1,16 +1,23 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
+
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
 
 const app = express();
 app.use(express.json());
+app.use(cors(corsOptions));
 
 const usuarios = [];
 
 app.get("/usuarios", (req, res) => {
   res.send(usuarios);
 });
-
 
 // app.post("/usuarios", (req, res) => {
 //   const idUsuario = uuidv4();
@@ -35,29 +42,27 @@ app.get("/usuarios", (req, res) => {
 //   res.status(201).send(usuarios[idUsuario]);
 // });
 
-
-app.post('/usuarios', async (req, res) =>{
-  try{
+app.post("/usuarios", async (req, res) => {
+  try {
     const idUsuario = uuidv4();
-    const hashedSenha = await bcrypt.hash(req.body.senha, 10)
+    const hashedSenha = await bcrypt.hash(req.body.senha, 10);
     const usuario = {
       id: idUsuario,
-      nome: req.body.nome, 
+      nome: req.body.nome,
       email: req.body.email,
       senha: hashedSenha,
       tipo: req.body.tipo,
       bio: req.body.bio,
       estilo: req.body.estilo,
       disponibilidade: req.body.disponibilidade,
-      link: req.body.link
-    }
-    usuarios.push(usuario)
+      link: req.body.link,
+    };
+    usuarios.push(usuario);
     res.status(201).send(usuarios[idUsuario]);
-  }catch{
-    res.status(500).send()
+  } catch {
+    res.status(500).send();
   }
-})
-
+});
 
 app.get("/usuarios/:email/:senha", (req, res) => {});
 
@@ -105,22 +110,21 @@ app.delete("/usuarios/:id", (req, res) => {
 });
 
 app.post("/usuarios/login", async (req, res) => {
-  const usuario = usuarios.find(usuario => usuario.email === req.body.email)
+  const usuario = usuarios.find((usuario) => usuario.email === req.body.email);
 
-  if(usuario == null){
-    return res.status(400).send('Usuário não encontrado')
+  if (usuario == null) {
+    return res.status(400).send("Usuário não encontrado");
   }
 
-  try{
-    if(await bcrypt.compare(req.body.senha, usuario.senha)){
-      res.send('Login concluído')
-    }else{
-      res.send('Senha incorreta')
+  try {
+    if (await bcrypt.compare(req.body.senha, usuario.senha)) {
+      res.send("Login concluído");
+    } else {
+      res.send("Senha incorreta");
     }
-  }catch{
-    res.status(500).send()
+  } catch {
+    res.status(500).send();
   }
-
 });
 
 app.listen(4000, () => {
