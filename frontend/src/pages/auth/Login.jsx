@@ -25,31 +25,30 @@ export const Login = () => {
   function handleSubmitForm(e) {
     e.preventDefault();
 
-    fetch("http://localhost:4000/usuarios/login", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        email,
-        senha,
-      }),
-    }).then((res) => {
-      console.log(res);
-      if (!res.ok) {
-        return toast.error("Erro no login", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-      }
-      return navigate("/anuncios/feed");
-    });
-
     try {
+      fetch("http://localhost:4000/usuarios/login", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          email,
+          senha,
+        }),
+      }).then((res) => {
+        console.log(res);
+        if (!res.ok) {
+          return toast.error("Erro no login", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
+        return navigate("/anuncios/feed");
+      });
     } catch (err) {
       toast.success(`Erro: ${err.message}`, {
         position: "top-right",
