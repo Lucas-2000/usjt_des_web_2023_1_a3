@@ -45,7 +45,17 @@ app.get("/usuarios", (req, res) => {
 app.post("/usuarios", async (req, res) => {
   try {
     const idUsuario = uuidv4();
+
+    const emailExistente = usuarios.find(
+      (usuario) => usuario.email === req.body.email
+    );
+
+    if (emailExistente) {
+      return res.status(400).send("Usuário já existe");
+    }
+
     const hashedSenha = await bcrypt.hash(req.body.senha, 10);
+
     const usuario = {
       id: idUsuario,
       nome: req.body.nome,
