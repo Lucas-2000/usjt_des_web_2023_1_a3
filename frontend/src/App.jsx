@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Cadastro } from "./pages/auth/Cadastro";
 import { Login } from "./pages/auth/Login";
-import { ToastContainer, toast } from "react-toastify";
+import { Feed } from "./pages/anuncios/Feed";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/cadastrar" element={<Cadastro />} />
+        <Route path="/anuncios/feed" element={<Feed />} />
       </Routes>
     </BrowserRouter>
   );

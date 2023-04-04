@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
+  const navigate = useNavigate();
+
   if (localStorage.getItem("showmsg") == "1") {
     toast.success("Usuário cadastrado com sucesso", {
       position: "top-right",
@@ -16,15 +22,65 @@ export const Login = () => {
     localStorage.removeItem("showmsg");
   }
 
+  function handleSubmitForm(e) {
+    e.preventDefault();
+
+    fetch("http://localhost:4000/usuarios/login", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        email,
+        senha,
+      }),
+    }).then((res) => {
+      console.log(res);
+      if (!res.ok) {
+        return toast.error("Erro no login", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+      return navigate("/anuncios/feed");
+    });
+
+    try {
+    } catch (err) {
+      toast.success(`Erro: ${err.message}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  }
+
   return (
     <div>
       <main>
-        <form>
+        <form onSubmit={handleSubmitForm}>
           <h1>Faça o login</h1>
           <label>Email:</label>
-          <input type="email" />
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
           <label>Senha:</label>
-          <input type="password" />
+          <input
+            type="password"
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
           <input type="submit" value="Login" />
           <a href="/cadastrar">Cadastro</a>
         </form>
