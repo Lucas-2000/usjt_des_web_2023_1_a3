@@ -128,9 +128,9 @@ app.post("/usuarios/login", async (req, res) => {
 
   try {
     if (await bcrypt.compare(req.body.senha, usuario.senha)) {
-      res.send("Login concluído");
+      res.status(201).send("Login concluído");
     } else {
-      res.send("Senha incorreta");
+      res.status(400).send("Senha incorreta");
     }
   } catch {
     res.status(500).send();
