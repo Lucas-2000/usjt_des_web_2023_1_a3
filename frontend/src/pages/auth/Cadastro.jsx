@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const Cadastro = () => {
   const [nome, setNome] = useState("");
@@ -9,6 +11,8 @@ export const Cadastro = () => {
   const [estilo, setEstilo] = useState("");
   const [disponibilidade, setDisponibilidade] = useState("");
   const [link, setLink] = useState("");
+
+  const navigate = useNavigate();
 
   function handleSubmitForm(e) {
     e.preventDefault();
@@ -31,10 +35,19 @@ export const Cadastro = () => {
         }).then((res) => {
           console.log(res);
           if (!res.ok) {
-            return window.alert("Erro na inclusão, usuário já cadastrado");
+            return toast.error("Erro na inclusão", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
           }
-          window.alert("Usuário cadastrado com sucesso");
-          return res;
+          localStorage.setItem("showmsg", "1");
+          return navigate("/");
         });
       } catch (err) {
         window.alert(`Erro: ${err.message}`);
@@ -55,12 +68,20 @@ export const Cadastro = () => {
             link: "",
           }),
         }).then((res) => {
-          console.log(res);
           if (!res.ok) {
-            return window.alert("Erro na inclusão, usuário já cadastrado");
+            return toast.error("Erro na inclusão", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
           }
-          window.alert("Usuário cadastrado com sucesso");
-          return res;
+          localStorage.setItem("showmsg", "1");
+          return navigate("/");
         });
       } catch (err) {
         window.alert(`Erro: ${err.message}`);
