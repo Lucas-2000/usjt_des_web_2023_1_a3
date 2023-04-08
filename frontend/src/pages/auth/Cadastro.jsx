@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import './cadastro.css'
+import imgCadastro from '../../images/imgCadastro.jpg'
 
 export const Cadastro = () => {
   const [nome, setNome] = useState("");
@@ -92,8 +94,11 @@ export const Cadastro = () => {
   return (
     <div>
       <main>
+        <div>
+          <img src={imgCadastro} />
+        </div>
+        <h1>Faça seu cadastro</h1>
         <form onSubmit={handleSubmitForm}>
-          <h1>Faça seu cadastro</h1>
           <label>Nome:</label>
           <input
             type="text"

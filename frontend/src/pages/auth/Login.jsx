@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import imgLogin from '../../images/imgLogin.jpg'
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -66,6 +67,9 @@ export const Login = () => {
   return (
     <div>
       <main>
+        <div>
+          <img src={imgLogin} alt="Imagem de um violão" />
+        </div>
         <form onSubmit={handleSubmitForm}>
           <h1>Faça o login</h1>
           <label>Email:</label>

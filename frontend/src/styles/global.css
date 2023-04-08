@@ -24,10 +24,9 @@ button {
 }
 
 :root {
-  --main-color: #3cc368;
-  --secondary-color: #84e;
-  --bg-color: #201b2c;
-  --bg-secondary-color: #333;
-  --light-text-color: #fff;
-  --dark-text-color: #000;
+  --jet: #333333ff;
+  --turquoise: #48e5c2ff;
+  --seasalt: #fcfaf9ff;
+  --desert-sand: #f3d3bdff;
+  --davys-gray: #5e5e5eff;
 }
