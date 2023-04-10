@@ -74,7 +74,25 @@ app.post("/usuarios", async (req, res) => {
   }
 });
 
-app.get("/usuarios/:email/:senha", (req, res) => {});
+app.get("/usuarios/login/:email/:senha", async (req, res) => {
+  const usuario = usuarios.find(
+    (usuario) => usuario.email === req.params.email
+  );
+
+  if (usuario == null) {
+    return res.status(400).send({ error: "Usuário não encontrado" });
+  }
+
+  try {
+    if (await bcrypt.compare(req.params.senha, usuario.senha)) {
+      res.status(201).send(usuario);
+    } else {
+      res.status(400).send({ error: "Login ou senha incorretos" });
+    }
+  } catch {
+    res.status(500).send();
+  }
+});
 
 app.put("/usuarios/:id", (req, res) => {
   const { id } = req.params;
@@ -128,9 +146,9 @@ app.post("/usuarios/login", async (req, res) => {
 
   try {
     if (await bcrypt.compare(req.body.senha, usuario.senha)) {
-      res.status(201).send("Login concluído");
+      res.status(201).send(usuario);
     } else {
-      res.status(400).send("Senha incorreta");
+      res.status(400).send("Login ou senha incorretos");
     }
   } catch {
     res.status(500).send();
