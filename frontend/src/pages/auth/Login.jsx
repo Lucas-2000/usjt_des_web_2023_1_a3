@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import imgLogin from '../../images/imgLogin.jpg'
+import { AuthContext } from "../../context/AuthContext";
+import imgLogin from "../../images/imgLogin.jpg";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
+  const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   if (localStorage.getItem("showmsg") == "1") {
