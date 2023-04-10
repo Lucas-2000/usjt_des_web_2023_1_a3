@@ -10,6 +10,8 @@ export const Feed = () => {
       .then((data) => setAnuncios(data));
   }, []);
 
+  console.log(anuncios);
+
   return (
     <main>
       <section>
@@ -19,8 +21,9 @@ export const Feed = () => {
       </section>
       <h1>Confira os eventos disponíveis</h1>
       <section>
+        {anuncios.length === 0 && <p>Sem anúncios no feed</p>}
         {anuncios.map((anuncio) => (
-          <article>
+          <article key={anuncio.id}>
             <h2>{anuncio.titulo}</h2>
             <ul>
               <li>

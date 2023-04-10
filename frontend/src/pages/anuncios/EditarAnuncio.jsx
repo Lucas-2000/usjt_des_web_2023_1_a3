@@ -1,5 +1,8 @@
 import React from "react";
+import { useParams } from "react-router";
 
 export const EditarAnuncio = () => {
-  return <div>EditarAnuncio</div>;
+  const params = useParams();
+
+  return <div>Anuncio: {params.id}</div>;
 };
