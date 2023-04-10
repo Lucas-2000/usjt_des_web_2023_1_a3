@@ -27,10 +27,7 @@ export const Feed = () => {
             <h2>{anuncio.titulo}</h2>
             <ul>
               <li>
-                <h3>{anuncio.descricao}</h3>Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Autem illo repudiandae doloribus
-                sit numquam ipsam nisi atque, enim ea suscipit rerum quod
-                excepturi eligendi dignissimos, a minima dolores nesciunt totam?
+                <h3>{anuncio.descricao}</h3>
               </li>
               <li>{anuncio.tipo}</li>
               <li>{anuncio.endereco}</li>
