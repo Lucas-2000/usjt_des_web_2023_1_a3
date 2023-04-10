@@ -21,7 +21,7 @@ app.get("/anuncios", (req, res) => {
 app.post("/anuncios", (req, res) => {
   const idAnuncio = uuidv4();
   const { titulo, descricao, tipo, endereco, pagamento } = req.body;
-  anuncios[idAnuncio] = {
+  const anuncio = {
     id: idAnuncio,
     titulo,
     descricao,
@@ -29,7 +29,8 @@ app.post("/anuncios", (req, res) => {
     endereco,
     pagamento,
   };
-  res.status(201).send(anuncios[idAnuncio]);
+  anuncios.push(anuncio);
+  res.status(201).send(anuncios);
 });
 
 app.put("/anuncios/:id", (req, res) => {

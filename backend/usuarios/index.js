@@ -68,7 +68,7 @@ app.post("/usuarios", async (req, res) => {
       link: req.body.link,
     };
     usuarios.push(usuario);
-    res.status(201).send(usuarios[idUsuario]);
+    res.status(201).send(usuarios);
   } catch {
     res.status(500).send();
   }
