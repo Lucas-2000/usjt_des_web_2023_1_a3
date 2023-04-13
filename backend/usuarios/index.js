@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+const axios = require("axios");
 const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
 
@@ -68,6 +69,22 @@ app.post("/usuarios", async (req, res) => {
       link: req.body.link,
     };
     usuarios.push(usuario);
+
+    await axios.post("http://localhost:10000/eventos", {
+      tipo: "UsuarioCriado",
+      dados: {
+        idUsuario,
+        nome: req.body.nome,
+        email: req.body.email,
+        senha: hashedSenha,
+        tipo: req.body.tipo,
+        bio: req.body.bio,
+        estilo: req.body.estilo,
+        disponibilidade: req.body.disponibilidade,
+        link: req.body.link,
+      },
+    });
+
     res.status(201).send(usuarios);
   } catch {
     res.status(500).send();
@@ -153,6 +170,11 @@ app.post("/usuarios/login", async (req, res) => {
   } catch {
     res.status(500).send();
   }
+});
+
+app.post("/eventos", (req, res) => {
+  console.log(req.body);
+  res.status(200).send({ msg: "ok" });
 });
 
 app.listen(4000, () => {
