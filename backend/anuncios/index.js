@@ -12,38 +12,32 @@ const app = express();
 app.use(express.json());
 app.use(cors(corsOptions));
 
-const anuncios = [];
+const anunciosPorUsuario = [];
 
-app.get("/anuncios", (req, res) => {
-  res.send(anuncios);
+app.get("/usuarios/:id/anuncios", (req, res) => {
+  res.send(anunciosPorUsuario[req.params.id] || []);
 });
 
-app.post("/anuncios", (req, res) => {
+app.post("/usuarios/:id/anuncios", (req, res) => {
   const idAnuncio = uuidv4();
   const { titulo, descricao, tipo, endereco, pagamento } = req.body;
-  const anuncio = {
-    id: idAnuncio,
-    titulo,
-    descricao,
-    tipo,
-    endereco,
-    pagamento,
-  };
-  anuncios.push(anuncio);
-  res.status(201).send(anuncios);
+  const anuncios = anunciosPorUsuario[req.params.id] || [];
+  anuncios.push({ id: idAnuncio, titulo, descricao, tipo, endereco, pagamento });
+  anunciosPorUsuario[req.params.id] = anuncios;
+
+  res.status(201).send(anunciosPorUsuario);
 });
 
-app.put("/anuncios/:id", (req, res) => {
+app.put("/usuarios/:id/anuncios/:id", (req, res) => {
   const { id } = req.params;
 
   const { titulo, descricao, tipo, endereco, pagamento } = req.body;
 
-  if (anuncios[id] === undefined)
+  if (anunciosPorUsuario[id] === undefined)
     return res.status(500).send("Insira um id válido");
 
-  if (id === anuncios[id].id) {
-    anuncios[idAnuncio] = {
-      id: idAnuncio,
+  if (id === anunciosPorUsuario[id].id) {
+    anunciosPorUsuario[id] = {
       titulo,
       descricao,
       tipo,
@@ -51,13 +45,13 @@ app.put("/anuncios/:id", (req, res) => {
       pagamento,
     };
 
-    return res.status(201).send(anuncios[id]);
+    return res.status(201).send(anunciosPorUsuario[idAnuncio]);
   } else {
     return res.status(500).send("Erro na atualização");
   }
 });
 
-app.delete("/anuncios/:id", (req, res) => {
+app.delete("/usuarios/:id/anuncios/:id", (req, res) => {
   const { id } = req.params;
 
   if (anuncios[id] === undefined)
