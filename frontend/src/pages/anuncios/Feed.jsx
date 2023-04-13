@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Feed = () => {
+  const { user } = useContext(AuthContext);
   const [anuncios, setAnuncios] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/anuncios")
+    fetch(`http://localhost:5000/usuarios/${user.id}/anuncios`)
       .then((res) => res.json())
       .then((data) => setAnuncios(data));
-  }, []);
-
-  console.log(anuncios);
+  }, [user.id]);
 
   return (
     <main>
@@ -32,7 +32,6 @@ export const Feed = () => {
               <li>{anuncio.tipo}</li>
               <li>{anuncio.endereco}</li>
               <li>{anuncio.pagamento}</li>
-              <a href={`/anuncios/editar/${anuncio.id}`}>Editar</a>
             </ul>
             <button>Me Candidatar</button>
           </article>
