@@ -22,48 +22,55 @@ app.post("/usuarios/:id/anuncios", (req, res) => {
   const idAnuncio = uuidv4();
   const { titulo, descricao, tipo, endereco, pagamento } = req.body;
   const anuncios = anunciosPorUsuario[req.params.id] || [];
-  anuncios.push({ id: idAnuncio, titulo, descricao, tipo, endereco, pagamento });
+  anuncios.push({
+    id: idAnuncio,
+    titulo,
+    descricao,
+    tipo,
+    endereco,
+    pagamento,
+  });
   anunciosPorUsuario[req.params.id] = anuncios;
 
   res.status(201).send(anunciosPorUsuario);
 });
 
-app.put("/usuarios/:id/anuncios/:id", (req, res) => {
-  const { id } = req.params;
+// app.put("/usuarios/:id_usuario/anuncios/:id_anuncio", (req, res) => {
+//   const { id_usuario, id_anuncio } = req.params;
 
-  const { titulo, descricao, tipo, endereco, pagamento } = req.body;
+//   const { titulo, descricao, tipo, endereco, pagamento } = req.body;
 
-  if (anunciosPorUsuario[id] === undefined)
-    return res.status(500).send("Insira um id válido");
+//   if (anunciosPorUsuario[id_usuario] === undefined)
+//     return res.status(500).send("Insira um id válido");
 
-  if (id === anunciosPorUsuario[id].id) {
-    anunciosPorUsuario[id] = {
-      titulo,
-      descricao,
-      tipo,
-      endereco,
-      pagamento,
-    };
+//   if (id_anuncio === anunciosPorUsuario[id_usuario].id) {
+//     anunciosPorUsuario[id_usuario] = {
+//       titulo,
+//       descricao,
+//       tipo,
+//       endereco,
+//       pagamento,
+//     };
 
-    return res.status(201).send(anunciosPorUsuario[idAnuncio]);
-  } else {
-    return res.status(500).send("Erro na atualização");
-  }
-});
+//     return res.status(201).send(anunciosPorUsuario[id_usuario]);
+//   } else {
+//     return res.status(500).send("Erro na atualização");
+//   }
+// });
 
-app.delete("/usuarios/:id/anuncios/:id", (req, res) => {
-  const { id } = req.params;
+// app.delete("/usuarios/:id/anuncios/:id", (req, res) => {
+//   const { id } = req.params;
 
-  if (anuncios[id] === undefined)
-    return res.status(500).send("Insira um id válido");
+//   if (anuncios[id] === undefined)
+//     return res.status(500).send("Insira um id válido");
 
-  if (id === anuncios[id].id) {
-    delete anuncios[id];
-    return res.status(201).send("Anuncio deletado");
-  } else {
-    return res.status(500).send("Erro no delete");
-  }
-});
+//   if (id === anuncios[id].id) {
+//     delete anuncios[id];
+//     return res.status(201).send("Anuncio deletado");
+//   } else {
+//     return res.status(500).send("Erro no delete");
+//   }
+// });
 
 app.listen(5000, () => {
   console.log("Anuncios executando na porta 5000");
