@@ -12,10 +12,14 @@ const app = express();
 app.use(express.json());
 app.use(cors(corsOptions));
 
-const anunciosPorUsuario = [];
+const anunciosPorUsuario = {};
+
+app.get("/anuncios", (req, res) => {
+  res.status(201).send(anunciosPorUsuario);
+});
 
 app.get("/usuarios/:id/anuncios", (req, res) => {
-  res.send(anunciosPorUsuario[req.params.id] || []);
+  res.status(201).send(anunciosPorUsuario[req.params.id] || []);
 });
 
 app.post("/usuarios/:id/anuncios", (req, res) => {
