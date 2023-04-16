@@ -1,3 +1,109 @@
-img{
-    height: 500px;
+.cadastro {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--davys-gray);
+}
+
+.cadastro-form {
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    box-shadow: var(--shadow-box);
+}
+
+.img-form {
+    width: 50%;
+    display: flex;
+}
+
+.img-form img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.form {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3rem;
+    background: var(--seasalt);
+}
+
+.header-form {
+    width: 100%;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-form a {
+    display: flex;
+    align-items: center;
+    background: var(--jet);
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    color: var(--seasalt);
+    cursor: pointer;
+    transition: background 0.3s ease 0s;
+}
+
+.header-form a:hover {
+    background: var(--turquoise);
+}
+
+.header-form h1{
+    position: relative;
+}
+
+.header-form h1::after{
+    content: '';
+    display: block;
+    width: 45%;
+    height: 0.3rem;
+    background: var(--turquoise);
+    margin: 0 auto;
+    position: absolute;
+}
+
+.group-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.input-form input{
+    margin: 0.6rem;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    outline: 0.15rem solid var(--davys-gray);
+    transition: all 0.3s ease 0s;
+}
+
+.input-form input:hover{
+    background: #eeeeee75;
+    outline: 0.15rem solid var(--turquoise);
+}
+
+.input-form input:focus-visible{
+    background: #eeeeee75;
+    outline: 0.15rem solid var(--turquoise);
+}
+
+.input-form label{
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--jet);
 }
