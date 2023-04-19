@@ -128,52 +128,63 @@ export const Cadastro = () => {
                   required
                 />
               </div>
-              <label>Tipo:</label>
-              <input
-                checked={tipo === "A"}
-                type="radio"
-                value="A"
-                name="tipo"
-                onChange={(e) => setTipo(e.target.value)}
-              />{" "}
-              Anunciante
-              <input
-                checked={tipo === "M"}
-                type="radio"
-                value="M"
-                name="tipo"
-                onChange={(e) => setTipo(e.target.value)}
-              />{" "}
-              Músico
+              <div className='radio-form'>
+                <label>Tipo:</label>
+                <div className="radio-button">
+                  <input
+                    checked={tipo === "A"}
+                    type="radio"
+                    value="A"
+                    name="tipo"
+                    onChange={(e) => setTipo(e.target.value)}
+                  />{" "}
+                  Anunciante</div>
+                <div className="radio-button">
+                  <input
+                    checked={tipo === "M"}
+                    type="radio"
+                    value="M"
+                    name="tipo"
+                    onChange={(e) => setTipo(e.target.value)}
+                  />{" "}
+                  Músico
+                </div>
+              </div>
               {tipo === "A" ? (
                 <>
-                  <label>Biografia:</label>
-                  <textarea
-                    cols="30"
-                    rows="10"
-                    onChange={(e) => setBiografia(e.target.value)}
-                    required
-                  ></textarea>
+                  <div className="bio-form">
+                    <label>Biografia:</label>
+                    <textarea
+                      cols="30"
+                      rows="5"
+                      onChange={(e) => setBiografia(e.target.value)}
+                      required
+                    ></textarea>
+                  </div>
                 </>
               ) : (
                 <>
-                  <label>Biografia:</label>
-                  <textarea
-                    cols="30"
-                    rows="10"
-                    onChange={(e) => setBiografia(e.target.value)}
-                    required
-                  ></textarea>
-                  <label>Estilo:</label>
-                  <select onChange={(e) => setEstilo(e.target.value)} required>
-                    <option value="">Selecione uma opção</option>
-                    <option value="Rock">Rock</option>
-                    <option value="Sertanejo">Sertanejo</option>
-                    <option value="Funk">Funk</option>
-                    <option value="Pagode">Pagode</option>
-                    <option value="Samba">Samba</option>
-                    <option value="MPB">MPB</option>
-                  </select>
+                  <div className="bio-form">
+                    <label>Biografia:</label>
+                    <textarea
+                      cols="30"
+                      rows="2"
+                      onChange={(e) => setBiografia(e.target.value)}
+                      required
+                    ></textarea>
+                  </div>
+                  <div className="option-form">
+                    <label>Estilo:</label>
+                    <select onChange={(e) => setEstilo(e.target.value)} required>
+                      <option value="">Selecione uma opção</option>
+                      <option value="Rock">Rock</option>
+                      <option value="Sertanejo">Sertanejo</option>
+                      <option value="Funk">Funk</option>
+                      <option value="Pagode">Pagode</option>
+                      <option value="Samba">Samba</option>
+                      <option value="MPB">MPB</option>
+                    </select>
+                  </div>
                   <div className="input-form">
                     <label>Disponibilidade:</label>
                     <input
@@ -192,7 +203,9 @@ export const Cadastro = () => {
                   </div>
                 </>
               )}
-              <input type="submit" value="Cadastrar" />
+              <div className="submit-form">
+                <input type="submit" value="Cadastrar" />
+              </div>
             </div>
           </form>
         </div>

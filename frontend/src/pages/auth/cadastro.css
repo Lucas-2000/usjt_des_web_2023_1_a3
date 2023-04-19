@@ -36,12 +36,15 @@
 
 .header-form {
     width: 100%;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
 }
 
+.submit-form input,
 .header-form a {
+    font-size: 1rem;
+    border: none;
     display: flex;
     align-items: center;
     background: var(--jet);
@@ -52,15 +55,16 @@
     transition: background 0.3s ease 0s;
 }
 
+.submit-form input:hover,
 .header-form a:hover {
     background: var(--turquoise);
 }
 
-.header-form h1{
+.header-form h1 {
     position: relative;
 }
 
-.header-form h1::after{
+.header-form h1::after {
     content: '';
     display: block;
     width: 45%;
@@ -70,40 +74,92 @@
     position: absolute;
 }
 
-.group-form{
+.group-form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem;
 }
 
-.input-form{
+.option-form,
+.input-form {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.1rem;
 }
 
-.input-form input{
+.option-form select,
+.bio-form textarea,
+.input-form input {
     margin: 0.6rem;
     padding: 0.8rem 1.2rem;
     border: none;
     border-radius: 5px;
     outline: 0.15rem solid var(--davys-gray);
+    resize: none;
     transition: all 0.3s ease 0s;
 }
 
-.input-form input:hover{
+.option-form select:hover,
+.bio-form textarea:hover,
+.input-form input:hover {
     background: #eeeeee75;
     outline: 0.15rem solid var(--turquoise);
 }
 
-.input-form input:focus-visible{
+.option-form select:focus-visible,
+.bio-form textarea:focus-visible,
+.input-form input:focus-visible {
     background: #eeeeee75;
     outline: 0.15rem solid var(--turquoise);
 }
 
-.input-form label{
+.bio-form label,
+.option-form label,
+.radio-form label,
+.input-form label {
     font-size: 1rem;
     font-weight: 600;
     color: var(--jet);
+}
+
+.radio-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.radio-button {
+    margin: 0.75rem;
+}
+
+.bio-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    width: 100%;
+}
+
+.submit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1330px) {
+    .img-form {
+        display: none;
+    }
+
+    .form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1064px) {
+    .cadastro-form {
+        width: 90%;
+        height: auto;
+    }
 }
