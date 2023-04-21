@@ -93,18 +93,18 @@ export const Cadastro = () => {
 
   return (
     <div className="cadastro">
-      <main className="cadastro-form">
-        <div className="img-form">
+      <main className="main-cadastro">
+        <div className="img-cadastro">
           <img src={imgCadastro} />
         </div>
-        <div className="form">
-          <div className="header-form">
+        <div className="form-cadastro">
+          <div className="header-cadastro">
             <h1>Faça seu cadastro</h1>
-            <a href="#">Entrar</a>
+            <a href="/login">Entrar</a>
           </div>
           <form onSubmit={handleSubmitForm}>
-            <div className="group-form">
-              <div className="input-form">
+            <div className="group-cadastro">
+              <div className="input-cadastro">
                 <label>Nome:</label>
                 <input
                   type="text"
@@ -112,7 +112,7 @@ export const Cadastro = () => {
                   required
                 />
               </div>
-              <div className="input-form">
+              <div className="input-cadastro">
                 <label>Email:</label>
                 <input
                   type="email"
@@ -120,7 +120,7 @@ export const Cadastro = () => {
                   required
                 />
               </div>
-              <div className="input-form">
+              <div className="input-cadastro">
                 <label>Senha:</label>
                 <input
                   type="password"
@@ -128,7 +128,7 @@ export const Cadastro = () => {
                   required
                 />
               </div>
-              <div className='radio-form'>
+              <div className='radio-cadastro'>
                 <label>Tipo:</label>
                 <div className="radio-button">
                   <input
@@ -152,7 +152,7 @@ export const Cadastro = () => {
               </div>
               {tipo === "A" ? (
                 <>
-                  <div className="bio-form">
+                  <div className="bio-cadastro">
                     <label>Biografia:</label>
                     <textarea
                       cols="30"
@@ -164,7 +164,7 @@ export const Cadastro = () => {
                 </>
               ) : (
                 <>
-                  <div className="bio-form">
+                  <div className="bio-cadastro">
                     <label>Biografia:</label>
                     <textarea
                       cols="30"
@@ -173,7 +173,7 @@ export const Cadastro = () => {
                       required
                     ></textarea>
                   </div>
-                  <div className="option-form">
+                  <div className="option-cadastro">
                     <label>Estilo:</label>
                     <select onChange={(e) => setEstilo(e.target.value)} required>
                       <option value="">Selecione uma opção</option>
@@ -185,7 +185,7 @@ export const Cadastro = () => {
                       <option value="MPB">MPB</option>
                     </select>
                   </div>
-                  <div className="input-form">
+                  <div className="input-cadastro">
                     <label>Disponibilidade:</label>
                     <input
                       type="text"
@@ -193,7 +193,7 @@ export const Cadastro = () => {
                       required
                     />
                   </div>
-                  <div className="input-form">
+                  <div className="input-cadastro">
                     <label>URL vídeo:</label>
                     <input
                       type="text"
@@ -203,7 +203,7 @@ export const Cadastro = () => {
                   </div>
                 </>
               )}
-              <div className="submit-form">
+              <div className="submit-cadastro">
                 <input type="submit" value="Cadastrar" />
               </div>
             </div>

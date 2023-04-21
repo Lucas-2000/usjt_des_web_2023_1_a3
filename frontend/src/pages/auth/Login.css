@@ -1,4 +1,4 @@
-.cadastro {
+.login {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -7,24 +7,26 @@
     background: var(--davys-gray);
 }
 
-.main-cadastro {
-    width: 80%;
+.main-login {
+    width: 50%;
     height: 80vh;
     display: flex;
+    box-shadow: var(--shadow-box);
 }
 
-.img-cadastro {
+.img-login {
     width: 50%;
     display: flex;
+
 }
 
-.img-cadastro img {
+.img-login img {
     width: 100%;
     object-fit: cover;
     border-radius: 5px;
 }
 
-.form-cadastro {
+.form-login {
     width: 50%;
     display: flex;
     justify-content: center;
@@ -35,15 +37,15 @@
     background: var(--seasalt);
 }
 
-.header-cadastro {
+.header-login {
     width: 100%;
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
 }
 
-.submit-cadastro input,
-.header-cadastro a {
+.submit-login input,
+.header-login a {
     font-size: 1rem;
     border: none;
     display: flex;
@@ -56,16 +58,16 @@
     transition: background 0.3s ease 0s;
 }
 
-.submit-cadastro input:hover,
-.header-cadastro a:hover {
+.submit-login input:hover,
+.header-login a:hover {
     background: var(--turquoise);
 }
 
-.header-cadastro h1 {
+.header-login h1 {
     position: relative;
 }
 
-.header-cadastro h1::after {
+.header-login h1::after {
     content: '';
     display: block;
     width: 45%;
@@ -75,24 +77,21 @@
     position: absolute;
 }
 
-.group-cadastro {
+.group-login {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem;
 }
 
-.option-cadastro,
-.input-cadastro {
+.input-login {
     display: flex;
-    width: 50%;
+    width: 100%;
     flex-direction: column;
     margin-bottom: 1.1rem;
 }
 
-.option-cadastro select,
-.bio-cadastro textarea,
-.input-cadastro input {
+.input-login input {
     margin: 0.6rem;
     padding: 0.5rem;
     border: none;
@@ -102,70 +101,54 @@
     transition: all 0.3s ease 0s;
 }
 
-.option-cadastro select:hover,
-.bio-cadastro textarea:hover,
-.input-cadastro input:hover {
+.input-login input:hover {
     background: #eeeeee75;
     outline: 0.15rem solid var(--turquoise);
 }
 
-.option-cadastro select:focus-visible,
-.bio-cadastro textarea:focus-visible,
-.input-cadastro input:focus-visible {
+.input-login input:focus-visible {
     background: #eeeeee75;
     outline: 0.15rem solid var(--turquoise);
 }
 
-.bio-cadastro label,
-.option-cadastro label,
-.radio-cadastro label,
-.input-cadastro label {
+.input-login label {
     font-size: 1rem;
     font-weight: 600;
     color: var(--jet);
 }
 
-.radio-cadastro {
+.submit-login {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.radio-button {
-    margin: 0.75rem;
-}
-
-.bio-cadastro {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.1rem;
-    width: 100%;
-}
-
-.submit-cadastro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 @media screen and (max-width: 1330px) {
-    .img-cadastro,
-    .img-cadastro img {
+
+    .img-login,
+    .img-login img {
         display: none;
     }
 
-    .form-cadastro {
+    .form-login {
         width: 100%;
         height: auto;
     }
 }
 
 @media screen and (max-width: 1064px) {
-    .form-cadastro {
+    .form-login {
         width: 100%;
         height: auto;
         display: flex;
         flex-direction: column;
     }
+
+    .main-login {
+        width: 80%;
+        height: 80vh;
+        display: flex;
+        box-shadow: var(--shadow-box);
+    }
+
 }
