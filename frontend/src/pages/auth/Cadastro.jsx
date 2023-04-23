@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import './cadastro.css'
-import imgCadastro from '../../images/imgCadastro.jpg'
+import "./cadastro.css";
+import imgCadastro from "../../images/imgCadastro.jpg";
 import { Input } from "../../components/Input/Input";
-import '@fortawesome/fontawesome-free/css/all.css'
+import "@fortawesome/fontawesome-free/css/all.css";
 
 export const Cadastro = () => {
   const [nome, setNome] = useState("");
@@ -102,15 +102,35 @@ export const Cadastro = () => {
         <div className="form-cadastro">
           <div className="header-cadastro">
             <h1>Faça seu cadastro</h1>
-            <a href="/login">Entrar</a>
+            <a href="/">Entrar</a>
           </div>
           <form onSubmit={handleSubmitForm}>
             <div className="group-cadastro">
-              <Input class="input text-cadastro" type="text" icon="fa-solid fa-user" label="Nome" onChange={(e) => setNome(e.target.value)} />
-              <Input class="input text-cadastro" type="email" icon="fa-solid fa-envelope" label="E-mail" onChange={(e) => setEmail(e.target.value)} />
-              <Input class="input text-cadastro" type="password" icon="fa-solid fa-lock" label="Senha" onChange={(e) => setSenha(e.target.value)} />
-              <div className='radio-cadastro'>
-                <label><i class="fa-solid fa-music"></i>Tipo</label>
+              <Input
+                className="input text-cadastro"
+                type="text"
+                icon="fa-solid fa-user"
+                label="Nome"
+                onChange={(e) => setNome(e.target.value)}
+              />
+              <Input
+                className="input text-cadastro"
+                type="email"
+                icon="fa-solid fa-envelope"
+                label="E-mail"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                className="input text-cadastro"
+                type="password"
+                icon="fa-solid fa-lock"
+                label="Senha"
+                onChange={(e) => setSenha(e.target.value)}
+              />
+              <div className="radio-cadastro">
+                <label>
+                  <i className="fa-solid fa-music"></i>Tipo
+                </label>
                 <div className="radio-button">
                   <input
                     checked={tipo === "A"}
@@ -119,7 +139,8 @@ export const Cadastro = () => {
                     name="tipo"
                     onChange={(e) => setTipo(e.target.value)}
                   />{" "}
-                  Anunciante</div>
+                  Anunciante
+                </div>
                 <div className="radio-button">
                   <input
                     checked={tipo === "M"}
@@ -134,7 +155,9 @@ export const Cadastro = () => {
               {tipo === "A" ? (
                 <>
                   <div className="bio-cadastro">
-                    <label><i class="fa-solid fa-book"></i>Biografia</label>
+                    <label>
+                      <i className="fa-solid fa-book"></i>Biografia
+                    </label>
                     <textarea
                       cols="30"
                       rows="5"
@@ -146,7 +169,9 @@ export const Cadastro = () => {
               ) : (
                 <>
                   <div className="bio-cadastro">
-                    <label><i class="fa-solid fa-book"></i>Biografia</label>
+                    <label>
+                      <i className="fa-solid fa-book"></i>Biografia
+                    </label>
                     <textarea
                       cols="30"
                       rows="2"
@@ -155,8 +180,13 @@ export const Cadastro = () => {
                     ></textarea>
                   </div>
                   <div className="option-cadastro">
-                    <label><i class="fa-solid fa-guitar"></i>Estilo</label>
-                    <select onChange={(e) => setEstilo(e.target.value)} required>
+                    <label>
+                      <i className="fa-solid fa-guitar"></i>Estilo
+                    </label>
+                    <select
+                      onChange={(e) => setEstilo(e.target.value)}
+                      required
+                    >
                       <option value="">Selecione uma opção</option>
                       <option value="Rock">Rock</option>
                       <option value="Sertanejo">Sertanejo</option>
@@ -166,8 +196,20 @@ export const Cadastro = () => {
                       <option value="MPB">MPB</option>
                     </select>
                   </div>
-                  <Input class="input text-cadastro" type="text" icon="fa-solid fa-calendar" label="Disponibilidade" onChange={(e) => setDisponibilidade(e.target.value)} />
-                  <Input class="input text-cadastro" type="text" icon="fa-solid fa-video" label="URL Video" onChange={(e) => setLink(e.target.value)} />
+                  <Input
+                    className="input text-cadastro"
+                    type="text"
+                    icon="fa-solid fa-calendar"
+                    label="Disponibilidade"
+                    onChange={(e) => setDisponibilidade(e.target.value)}
+                  />
+                  <Input
+                    className="input text-cadastro"
+                    type="text"
+                    icon="fa-solid fa-video"
+                    label="URL Video"
+                    onChange={(e) => setLink(e.target.value)}
+                  />
                 </>
               )}
               <div className="submit-cadastro">
@@ -176,7 +218,7 @@ export const Cadastro = () => {
             </div>
           </form>
         </div>
-      </main >
-    </div >
+      </main>
+    </div>
   );
 };

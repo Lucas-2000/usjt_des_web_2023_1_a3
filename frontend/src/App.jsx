@@ -23,7 +23,7 @@ function App() {
           theme="colored"
         />
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/cadastrar" element={<Cadastro />} />
           <Route path="/anuncios/feed" element={<Feed />} />
         </Routes>
