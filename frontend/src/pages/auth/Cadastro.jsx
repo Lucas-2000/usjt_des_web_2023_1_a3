@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import './cadastro.css'
 import imgCadastro from '../../images/imgCadastro.jpg'
+import { Input } from "../../components/Input/Input";
+import '@fortawesome/fontawesome-free/css/all.css'
 
 export const Cadastro = () => {
   const [nome, setNome] = useState("");
@@ -104,32 +106,11 @@ export const Cadastro = () => {
           </div>
           <form onSubmit={handleSubmitForm}>
             <div className="group-cadastro">
-              <div className="input-cadastro">
-                <label>Nome:</label>
-                <input
-                  type="text"
-                  onChange={(e) => setNome(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="input-cadastro">
-                <label>Email:</label>
-                <input
-                  type="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="input-cadastro">
-                <label>Senha:</label>
-                <input
-                  type="password"
-                  onChange={(e) => setSenha(e.target.value)}
-                  required
-                />
-              </div>
+              <Input class="input text-cadastro" type="text" icon="fa-solid fa-user" label="Nome" onChange={(e) => setNome(e.target.value)} />
+              <Input class="input text-cadastro" type="email" icon="fa-solid fa-envelope" label="E-mail" onChange={(e) => setEmail(e.target.value)} />
+              <Input class="input text-cadastro" type="password" icon="fa-solid fa-lock" label="Senha" onChange={(e) => setSenha(e.target.value)} />
               <div className='radio-cadastro'>
-                <label>Tipo:</label>
+                <label><i class="fa-solid fa-music"></i>Tipo</label>
                 <div className="radio-button">
                   <input
                     checked={tipo === "A"}
@@ -153,7 +134,7 @@ export const Cadastro = () => {
               {tipo === "A" ? (
                 <>
                   <div className="bio-cadastro">
-                    <label>Biografia:</label>
+                    <label><i class="fa-solid fa-book"></i>Biografia</label>
                     <textarea
                       cols="30"
                       rows="5"
@@ -165,7 +146,7 @@ export const Cadastro = () => {
               ) : (
                 <>
                   <div className="bio-cadastro">
-                    <label>Biografia:</label>
+                    <label><i class="fa-solid fa-book"></i>Biografia</label>
                     <textarea
                       cols="30"
                       rows="2"
@@ -174,7 +155,7 @@ export const Cadastro = () => {
                     ></textarea>
                   </div>
                   <div className="option-cadastro">
-                    <label>Estilo:</label>
+                    <label><i class="fa-solid fa-guitar"></i>Estilo</label>
                     <select onChange={(e) => setEstilo(e.target.value)} required>
                       <option value="">Selecione uma opção</option>
                       <option value="Rock">Rock</option>
@@ -185,22 +166,8 @@ export const Cadastro = () => {
                       <option value="MPB">MPB</option>
                     </select>
                   </div>
-                  <div className="input-cadastro">
-                    <label>Disponibilidade:</label>
-                    <input
-                      type="text"
-                      onChange={(e) => setDisponibilidade(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="input-cadastro">
-                    <label>URL vídeo:</label>
-                    <input
-                      type="text"
-                      onChange={(e) => setLink(e.target.value)}
-                      required
-                    />
-                  </div>
+                  <Input class="input text-cadastro" type="text" icon="fa-solid fa-calendar" label="Disponibilidade" onChange={(e) => setDisponibilidade(e.target.value)} />
+                  <Input class="input text-cadastro" type="text" icon="fa-solid fa-video" label="URL Video" onChange={(e) => setLink(e.target.value)} />
                 </>
               )}
               <div className="submit-cadastro">

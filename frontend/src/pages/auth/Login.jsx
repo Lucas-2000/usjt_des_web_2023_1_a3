@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthContext";
 import imgLogin from "../../images/imgLogin.jpg";
 import './Login.css'
+import { Input } from "../../components/Input/Input";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -69,9 +70,9 @@ export const Login = () => {
     }
   }
 
-  const userLogged = localStorage.getItem("user");
+  // const userLogged = localStorage.getItem("user");
 
-  if (userLogged !== null) return navigate("/anuncios/feed");
+  // if (userLogged !== null) return navigate("/anuncios/feed");
 
   return (
     <div className="login">
@@ -86,22 +87,8 @@ export const Login = () => {
           </div>
           <form onSubmit={handleSubmitForm}>
             <div className="group-login">
-              <div className="input-login">
-                <label>Email:</label>
-                <input
-                  type="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="input-login">
-                <label>Senha:</label>
-                <input
-                  type="password"
-                  onChange={(e) => setSenha(e.target.value)}
-                  required
-                />
-              </div>
+              <Input class="input text-login" type="email" icon="fa-solid fa-envelope" label="E-mail" onChange={(e) => setEmail(e.target.value)} />
+              <Input class="input text-login" type="password" icon="fa-solid fa-lock" label="Senha" onChange={(e) => setSenha(e.target.value)} />
               <div className="submit-login">
                 <input type="submit" value="Login" />
               </div>

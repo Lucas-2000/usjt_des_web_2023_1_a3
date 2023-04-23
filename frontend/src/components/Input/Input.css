@@ -1,0 +1,43 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.text-cadastro {
+    width: 50%;
+}
+
+.text-login {
+    width: 100%;
+}
+
+.input input {
+    margin: 0.6rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    outline: 0.1rem solid var(--davys-gray);
+    resize: none;
+    transition: all 0.3s ease 0s;
+}
+
+.input input:hover {
+    background: #eeeeee75;
+    outline: 0.15rem solid var(--turquoise);
+}
+
+.input input:focus-visible {
+    background: #eeeeee75;
+    outline: 0.15rem solid var(--turquoise);
+}
+
+.input label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--jet);
+}
+
+.input i {
+    margin: 0 0.5rem 0 0;
+}

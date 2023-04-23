@@ -82,8 +82,7 @@
     padding: 1rem;
 }
 
-.option-cadastro,
-.input-cadastro {
+.option-cadastro {
     display: flex;
     width: 50%;
     flex-direction: column;
@@ -91,8 +90,7 @@
 }
 
 .option-cadastro select,
-.bio-cadastro textarea,
-.input-cadastro input {
+.bio-cadastro textarea {
     margin: 0.6rem;
     padding: 0.5rem;
     border: none;
@@ -102,37 +100,45 @@
     transition: all 0.3s ease 0s;
 }
 
-.option-cadastro select:hover,
-.bio-cadastro textarea:hover,
-.input-cadastro input:hover {
+.option-cadastro select:hover {
     background: #eeeeee75;
     outline: 0.15rem solid var(--turquoise);
 }
 
 .option-cadastro select:focus-visible,
-.bio-cadastro textarea:focus-visible,
-.input-cadastro input:focus-visible {
+.bio-cadastro textarea:focus-visible {
     background: #eeeeee75;
     outline: 0.15rem solid var(--turquoise);
 }
 
 .bio-cadastro label,
 .option-cadastro label,
-.radio-cadastro label,
-.input-cadastro label {
+.radio-cadastro label {
     font-size: 1rem;
     font-weight: 600;
     color: var(--jet);
+}
+
+.radio-cadastro label i,
+.bio-cadastro label i,
+.option-cadastro label i {
+    margin: 0 0.5rem 0 0;
 }
 
 .radio-cadastro {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 0.1rem dashed var(--jet);
+    margin: 0 0.6rem 1.1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
 }
 
 .radio-button {
-    margin: 0.75rem;
+    margin: 0 0.75rem;
 }
 
 .bio-cadastro {
@@ -150,6 +156,7 @@
 }
 
 @media screen and (max-width: 1330px) {
+
     .img-cadastro,
     .img-cadastro img {
         display: none;
@@ -165,6 +172,11 @@
     .form-cadastro {
         width: 100%;
         height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .radio-cadastro {
         display: flex;
         flex-direction: column;
     }
