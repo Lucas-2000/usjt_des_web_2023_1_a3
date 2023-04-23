@@ -22,7 +22,7 @@ export const Login = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "colored",
+      theme: "light",
     });
     localStorage.removeItem("showmsg");
   }
@@ -48,7 +48,7 @@ export const Login = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
-              theme: "colored",
+              theme: "light",
             });
           } else {
             localStorage.setItem("user", JSON.stringify(data));
@@ -65,14 +65,14 @@ export const Login = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "light",
       });
     }
   }
 
-  const userLogged = localStorage.getItem("user");
+  // const userLogged = localStorage.getItem("user");
 
-  if (userLogged !== null) return navigate("/anuncios/feed");
+  // if (userLogged !== null) return navigate("/anuncios/feed");
 
   return (
     <div className="login">

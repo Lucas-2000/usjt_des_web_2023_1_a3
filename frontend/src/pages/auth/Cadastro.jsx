@@ -37,7 +37,6 @@ export const Cadastro = () => {
             link,
           }),
         }).then((res) => {
-          console.log(res);
           if (!res.ok) {
             return toast.error("Erro na inclusão", {
               position: "top-right",
@@ -47,7 +46,7 @@ export const Cadastro = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
-              theme: "colored",
+              theme: "light",
             });
           }
           localStorage.setItem("showmsg", "1");
@@ -81,7 +80,7 @@ export const Cadastro = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
-              theme: "colored",
+              theme: "light",
             });
           }
           localStorage.setItem("showmsg", "1");
