@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 
 export const Feed = () => {
@@ -7,6 +8,7 @@ export const Feed = () => {
   const [todos, setTodos] = useState("T");
   const [anuncios, setAnuncios] = useState([]);
   const [todosAnuncios, setTodosAnuncios] = useState([]);
+  const navigate = useNavigate();
   const baseAnuncios = [];
 
   if (todos === "T") {
@@ -27,9 +29,15 @@ export const Feed = () => {
     }, [user.id]);
   }
 
+  function logout() {
+    localStorage.removeItem("user");
+    return navigate("/");
+  }
+
   return (
     <main>
       <section>
+        <button onClick={logout}>Sair</button>
         <label>
           Buscar <input type="text" id="busca" name="busca" />
         </label>
