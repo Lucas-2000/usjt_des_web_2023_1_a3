@@ -75,8 +75,9 @@ export const Feed = () => {
                     <li>{anuncio.endereco}</li>
                     <li>{anuncio.pagamento}</li>
                   </ul>
-                  <a href={`/anuncios/anuncio/${anuncio.id}`}>Ver mais</a>
-                  <button>Me Candidatar</button>
+                  <a href={`/anuncios/anuncio/${anuncio.idAnuncio}`}>
+                    Ver mais
+                  </a>
                 </div>
               ))}
             </article>
@@ -85,8 +86,8 @@ export const Feed = () => {
       ) : (
         <section>
           {anuncios.length === 0 && <p>Sem anúncios no feed</p>}
-          {anuncios.map((anuncio) => (
-            <article key={anuncio.id}>
+          {anuncios.map((anuncio, id) => (
+            <article key={id}>
               <h2>{anuncio.titulo}</h2>
               <ul>
                 <li>
@@ -97,7 +98,6 @@ export const Feed = () => {
                 <li>{anuncio.pagamento}</li>
               </ul>
               <a href={`/anuncios/anuncio/${anuncio.id}`}>Ver mais</a>
-              <button>Me Candidatar</button>
             </article>
           ))}
         </section>

@@ -1,8 +1,17 @@
 const express = require("express");
 const axios = require("axios");
-const app = express();
+const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
+
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
+const app = express();
 app.use(express.json());
+app.use(cors(corsOptions));
 
 const inscricoesNoAnuncio = {};
 
