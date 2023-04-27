@@ -14,6 +14,11 @@ const funcoes = {
     anuncios.push(anuncio);
     baseConsulta[anuncio.idUsuario]["anuncios"] = anuncios;
   },
+  InscricaoCriada: (inscricao) => {
+    const inscricoes = baseConsulta[inscricao.idUsuario]["inscricoes"] || [];
+    inscricoes.push(inscricao);
+    baseConsulta[inscricao.idUsuario]["inscricoes"] = inscricoes;
+  },
 };
 
 app.get("/usuarios", (req, res) => {

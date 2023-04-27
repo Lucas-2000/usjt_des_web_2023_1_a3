@@ -14,6 +14,8 @@ app.post("/eventos", (req, res) => {
   axios.post("http://localhost:5000/eventos", evento);
   //envia o evento para o microsserviço de consulta
   axios.post("http://localhost:6000/eventos", evento);
+  //envia o evento para o microsservico de inscrição
+  axios.post("http://localhost:7000/eventos", evento);
   res.status(200).send({ msg: "ok" });
 });
 

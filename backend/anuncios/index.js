@@ -28,12 +28,13 @@ app.post("/usuarios/:id/anuncios", async (req, res) => {
   const { titulo, descricao, tipo, endereco, pagamento } = req.body;
   const anuncios = anunciosPorUsuario[req.params.id] || [];
   anuncios.push({
-    id: idAnuncio,
+    idAnuncio,
     titulo,
     descricao,
     tipo,
     endereco,
     pagamento,
+    idUsuario: req.params.id,
   });
   anunciosPorUsuario[req.params.id] = anuncios;
 
