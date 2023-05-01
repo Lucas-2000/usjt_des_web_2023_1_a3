@@ -32,6 +32,14 @@
     outline: 0.15rem solid var(--turquoise);
 }
 
+.input .search:hover {
+    background: var(--seasalt);
+}
+
+.input .search:focus-visible {
+    background: var(--seasalt);
+}
+
 .input label {
     font-size: 1rem;
     font-weight: 600;

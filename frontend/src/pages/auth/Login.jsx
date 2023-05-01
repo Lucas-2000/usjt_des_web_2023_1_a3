@@ -70,9 +70,9 @@ export const Login = () => {
     }
   }
 
-  const userLogged = localStorage.getItem("user");
+  // const userLogged = localStorage.getItem("user");
 
-  if (userLogged !== null) return navigate("/anuncios/feed");
+  // if (userLogged !== null) return navigate("/anuncios/feed");
 
   return (
     <div className="login">

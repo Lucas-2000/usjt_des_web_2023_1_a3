@@ -9,7 +9,7 @@ export const Input = (props) => {
         <i className={props.icon}></i>
         {props.label}
       </label>
-      <input type={props.type} onChange={props.onChange} required />
+      <input className={props.inputClass} type={props.type} onChange={props.onChange} placeholder={props.placeholder} required />
     </div>
   );
 };

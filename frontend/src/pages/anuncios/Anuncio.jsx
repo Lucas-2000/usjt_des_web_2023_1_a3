@@ -49,16 +49,18 @@ const Anuncio = () => {
   }
 
   return (
-    <main>
-      <article>
-        <h1>Anuncio: {id}</h1>
-        <h2>Caso deseje se candidatar para o evento, clique no botão abaixo</h2>
-        <button onClick={criarInscricao}>Me Candidatar</button>
-        {baseInscricoes.length === 0 ? (
-          <p>Sem inscrições</p>
-        ) : (
-          <p>Veja abaixo todas as inscrições</p>
-        )}
+    <div className="anuncio">
+      <main className="main-anuncio">
+        <article className="header-anuncio">
+          <h1>Anuncio: {id}</h1>
+          <h2>Caso deseje se candidatar para o evento, clique no botão abaixo</h2>
+          <button onClick={criarInscricao}>Me Candidatar</button>
+          {baseInscricoes.length === 0 ? (
+            <p>Sem inscrições</p>
+          ) : (
+            <p>Veja abaixo todas as inscrições</p>
+          )}
+        </article>
         <table>
           <thead>
             <tr>
@@ -87,8 +89,8 @@ const Anuncio = () => {
             </tbody>
           ))}
         </table>
-      </article>
-    </main>
+      </main>
+    </div>
   );
 };
 
