@@ -38,20 +38,24 @@ app.post("/usuarios/:id/anuncios", async (req, res) => {
   });
   anunciosPorUsuario[req.params.id] = anuncios;
 
-  await axios.post("http://localhost:10000/eventos", {
-    tipo: "AnuncioCriado",
-    dados: {
-      idAnuncio,
-      titulo,
-      descricao,
-      tipo,
-      endereco,
-      pagamento,
-      idUsuario: req.params.id,
-    },
-  });
+  try {
+    await axios.post("http://localhost:10000/eventos", {
+      tipo: "AnuncioCriado",
+      dados: {
+        idAnuncio,
+        titulo,
+        descricao,
+        tipo,
+        endereco,
+        pagamento,
+        idUsuario: req.params.id,
+      },
+    });
 
-  res.status(201).send(anunciosPorUsuario);
+    res.status(201).send(anunciosPorUsuario);
+  } catch (err) {
+    res.status(500).send();
+  }
 });
 
 // app.put("/usuarios/:id_usuario/anuncios/:id_anuncio", (req, res) => {

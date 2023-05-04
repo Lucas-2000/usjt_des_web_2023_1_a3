@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useParams } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -30,7 +31,7 @@ const Anuncio = () => {
         }),
       }).then((res) => {
         if (!res.ok) {
-          return toast.error("Erro na inscrição", {
+          return toast.error("Usuário já inscrito", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -53,8 +54,13 @@ const Anuncio = () => {
       <main className="main-anuncio">
         <article className="header-anuncio">
           <h1>Anuncio: {id}</h1>
-          <h2>Caso deseje se candidatar para o evento, clique no botão abaixo</h2>
-          <button onClick={criarInscricao}>Me Candidatar</button>
+          <h2>
+            Caso deseje se candidatar para o evento, clique no botão abaixo
+          </h2>
+          {user.tipo === "M" ? (
+            <button onClick={criarInscricao}>Me Candidatar</button>
+          ) : null}
+
           {baseInscricoes.length === 0 ? (
             <p>Sem inscrições</p>
           ) : (

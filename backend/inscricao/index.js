@@ -28,6 +28,13 @@ app.post("/usuarios/:idUsuario/inscricoes", async (req, res) => {
   const { idAnuncio, nome, email } = req.body;
   const { idUsuario } = req.params;
   const inscricoes = inscricoesNoAnuncio[idUsuario] || [];
+
+  console.log(inscricoesNoAnuncio[idUsuario]);
+
+  if (inscricoesNoAnuncio[idUsuario] !== undefined) {
+    return res.status(400).send("Inscrição já existe");
+  }
+
   inscricoes.push({
     idInscricao,
     idAnuncio,
@@ -37,18 +44,22 @@ app.post("/usuarios/:idUsuario/inscricoes", async (req, res) => {
   });
   inscricoesNoAnuncio[idUsuario] = inscricoes;
 
-  await axios.post("http://localhost:10000/eventos", {
-    tipo: "InscricaoCriada",
-    dados: {
-      idInscricao,
-      idAnuncio,
-      idUsuario,
-      nome,
-      email,
-    },
-  });
+  try {
+    await axios.post("http://localhost:10000/eventos", {
+      tipo: "InscricaoCriada",
+      dados: {
+        idInscricao,
+        idAnuncio,
+        idUsuario,
+        nome,
+        email,
+      },
+    });
 
-  res.status(201).send(inscricoesNoAnuncio);
+    res.status(201).send(inscricoesNoAnuncio);
+  } catch (err) {
+    res.status(500).send();
+  }
 });
 
 app.post("/eventos", (req, res) => {
