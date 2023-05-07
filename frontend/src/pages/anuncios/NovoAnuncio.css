@@ -1,0 +1,133 @@
+.novo-anuncio {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--davys-gray);
+}
+
+.main-novo-anuncio {
+    width: 80%;
+    height: 80vh;
+    display: flex;
+}
+
+.img-novo-anuncio {
+    width: 50%;
+    display: flex;
+}
+
+.img-novo-anuncio img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.form-novo-anuncio {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3rem;
+    border-radius: 5px;
+    background: var(--seasalt);
+}
+
+.header-novo-anuncio {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit-novo-anuncio input,
+.header-novo-anuncio a {
+    font-size: 1rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    background: var(--jet);
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    color: var(--seasalt);
+    cursor: pointer;
+    transition: background 0.3s ease 0s;
+}
+
+.submit-novo-anuncio input:hover,
+.header-novo-anuncio a:hover {
+    background: var(--turquoise);
+}
+
+.header-novo-anuncio h1 {
+    position: relative;
+}
+
+.header-novo-anuncio h1::after {
+    content: '';
+    display: block;
+    width: 45%;
+    height: 0.3rem;
+    background: var(--turquoise);
+    margin: 0 auto;
+    position: absolute;
+}
+
+.group-novo-anuncio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.desc-novo-anuncio {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    width: 100%;
+}
+
+.option-novo-anuncio {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.option-novo-anuncio select,
+.desc-novo-anuncio textarea {
+    margin: 0.6rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    outline: 0.1rem solid var(--davys-gray);
+    resize: none;
+    transition: all 0.3s ease 0s;
+}
+
+.option-novo-anuncio select:hover {
+    background: #eeeeee75;
+    outline: 0.15rem solid var(--turquoise);
+}
+
+.option-novo-anuncio select:focus-visible,
+.desc-novo-anuncio textarea:focus-visible {
+    background: #eeeeee75;
+    outline: 0.15rem solid var(--turquoise);
+}
+
+.desc-novo-anuncio label,
+.option-novo-anuncio label,
+.radio-novo-anuncio label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--jet);
+}
+
+.radio-novo-anuncio label i,
+.desc-novo-anuncio label i,
+.option-novo-anuncio label i {
+    margin: 0 0.5rem 0 0;
+}

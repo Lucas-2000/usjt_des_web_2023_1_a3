@@ -41,34 +41,41 @@ export const Feed = () => {
   return (
     <div className="feed">
       <header className="header-feed">
-        <div className="radio-feed">
-          <div className="radio-option">
-            <input
-              checked={todos === "T"}
-              type="radio"
-              value="T"
-              name="todos"
-              onChange={(e) => setTodos(e.target.value)}
-            />{" "}
-            <div className="radio-btn">
-              <i className="fa-solid fa-border-all"></i>
-              <p>Ver todos</p>
+        {user.tipo === "A" ? (
+          <div className="radio-feed">
+
+            <div className="radio-option">
+
+              <input
+                checked={todos === "T"}
+                type="radio"
+                value="T"
+                name="todos"
+                onChange={(e) => setTodos(e.target.value)}
+              />{" "}
+
+              <div className="radio-btn">
+                <i className="fa-solid fa-border-all"></i>
+                <p>Ver todos</p>
+              </div>
             </div>
-          </div>
-          <div className="radio-option">
-            <input
-              checked={todos === "M"}
-              type="radio"
-              value="M"
-              name="todos"
-              onChange={(e) => setTodos(e.target.value)}
-            />{" "}
-            <div className="radio-btn">
-              <i className="fa-solid fa-user"></i>
-              <p>Ver os meus</p>
+
+            <div className="radio-option">
+              <input
+                checked={todos === "M"}
+                type="radio"
+                value="M"
+                name="todos"
+                onChange={(e) => setTodos(e.target.value)}
+              />{" "}
+              <div className="radio-btn">
+                <i className="fa-solid fa-user"></i>
+                <p>Ver os meus</p>
+              </div>
             </div>
+
           </div>
-        </div>
+        ) : null}
         <div className="search-feed">
           <Input
             className="input"
@@ -129,7 +136,9 @@ export const Feed = () => {
             ))}
           </section>
         )}
-        <a href="#" className="mais-anuncio">+</a>
+        {user.tipo === "A" ? (
+          <a href="/novoanuncio" className="mais-anuncio">+</a>
+        ) : null}
       </main>
     </div >
   );

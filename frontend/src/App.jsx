@@ -8,6 +8,7 @@ import { AuthContext, AuthContextProvider } from "./context/AuthContext";
 import Anuncio from "./pages/anuncios/Anuncio";
 import ProtectedRoute from "./pages/protected/ProtectedRoute";
 import { useContext } from "react";
+import { NovoAnuncio } from "./pages/anuncios/NovoAnuncio";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/cadastrar" element={<Cadastro />} />
+          <Route path="/novoanuncio" element={<NovoAnuncio />} />
           <Route
             path="/anuncios/feed"
             element={
