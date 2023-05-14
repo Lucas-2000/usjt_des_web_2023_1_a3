@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
-import imgAnuncio from "../../images/imgAnuncio.jpg"
-import "./Anuncio.css"
+import imgAnuncio from "../../images/imgAnuncio.jpg";
+import "./Anuncio.css";
 
 const Anuncio = () => {
   const { user } = useContext(AuthContext);
@@ -26,8 +26,8 @@ const Anuncio = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/anuncios`)
       .then((res) => res.json())
-      .then((data) => setAnuncio(data))
-  })
+      .then((data) => setAnuncio(data));
+  });
 
   for (let [id, colecao] of Object.entries(anuncio)) {
     baseAnuncios.push(colecao);
@@ -55,7 +55,16 @@ const Anuncio = () => {
             theme: "light",
           });
         }
-        location.reload();
+        return toast.success("Usuário inscrito com sucesso", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
     } catch (err) {
       window.alert(`Erro: ${err.message}`);
@@ -67,44 +76,47 @@ const Anuncio = () => {
       <main className="main-anuncio">
         <section className="form-anuncio">
           <article className="header-anuncio">
-            {user.tipo === "A" ? (
-              <h1>Anúncio</h1>
-            ) :
-              <h1>Inscreva-se</h1>
-            }
+            {user.tipo === "A" ? <h1>Anúncio</h1> : <h1>Inscreva-se</h1>}
             <a href="/anuncios/feed">Voltar</a>
           </article>
-          {baseAnuncios.map((anuncios) => (
-            <section className="desc-anuncio">
-              {anuncios.filter((anuncio) => {
-                if (anuncio.idAnuncio === id) {
-                  return true;
-                } else {
-                  return false;
-                }
-              }).map((anuncio) => (
-                <article className="inner-desc-anuncio">
-                  <h1>{anuncio.titulo}</h1>
-                  <h3><i className="fa-solid fa-file"></i> Descrição</h3>
-                  <p>{anuncio.descricao}</p>
-                  <h3><i className="fa-solid fa-guitar"></i>Tipo</h3>
-                  <p>{anuncio.tipo}</p>
-                  <h3><i className="fa-solid fa-location-dot"></i>Endereço</h3>
-                  <p>{anuncio.endereco}</p>
-                  <h3><i className="fa-solid fa-dollar-sign"></i>Pagamento</h3>
-                  <p>{anuncio.pagamento}</p>
-
-                </article>
-              ))}
+          {baseAnuncios.map((anuncios, id) => (
+            <section className="desc-anuncio" key={id}>
+              {anuncios
+                .filter((anuncio) => {
+                  if (anuncio.idAnuncio === id) {
+                    return true;
+                  } else {
+                    return false;
+                  }
+                })
+                .map((anuncio, subId) => (
+                  <article className="inner-desc-anuncio" key={subId}>
+                    <h1>{anuncio.titulo}</h1>
+                    <h3>
+                      <i className="fa-solid fa-file"></i> Descrição
+                    </h3>
+                    <p>{anuncio.descricao}</p>
+                    <h3>
+                      <i className="fa-solid fa-guitar"></i>Tipo
+                    </h3>
+                    <p>{anuncio.tipo}</p>
+                    <h3>
+                      <i className="fa-solid fa-location-dot"></i>Endereço
+                    </h3>
+                    <p>{anuncio.endereco}</p>
+                    <h3>
+                      <i className="fa-solid fa-dollar-sign"></i>Pagamento
+                    </h3>
+                    <p>{anuncio.pagamento}</p>
+                  </article>
+                ))}
             </section>
           ))}
           {user.tipo === "M" ? (
             <div className="submit-anuncio">
               <button onClick={criarInscricao}>Me Candidatar</button>
             </div>
-          ) :
-            null
-          }
+          ) : null}
         </section>
         {user.tipo === "A" ? (
           <section className="tabela-anuncio">
@@ -142,13 +154,13 @@ const Anuncio = () => {
                 </tbody>
               ))}
             </table>
-          </section>) : (
+          </section>
+        ) : (
           <section className="img-anuncio">
             <img src={imgAnuncio} />
           </section>
         )}
       </main>
-
     </div>
   );
 };

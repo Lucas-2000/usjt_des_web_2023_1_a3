@@ -9,6 +9,7 @@ import Anuncio from "./pages/anuncios/Anuncio";
 import ProtectedRoute from "./pages/protected/ProtectedRoute";
 import { useContext } from "react";
 import { NovoAnuncio } from "./pages/anuncios/NovoAnuncio";
+import ProtectedNovoAnuncioRoute from "./pages/protected/ProtectedNovoAnuncioRoute";
 
 function App() {
   return (
@@ -29,7 +30,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/cadastrar" element={<Cadastro />} />
-          <Route path="/novoanuncio" element={<NovoAnuncio />} />
+          <Route
+            path="/novoanuncio"
+            element={
+              <ProtectedNovoAnuncioRoute>
+                <NovoAnuncio />
+              </ProtectedNovoAnuncioRoute>
+            }
+          />
           <Route
             path="/anuncios/feed"
             element={

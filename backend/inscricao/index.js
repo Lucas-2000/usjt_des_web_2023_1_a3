@@ -29,10 +29,13 @@ app.post("/usuarios/:idUsuario/inscricoes", async (req, res) => {
   const { idUsuario } = req.params;
   const inscricoes = inscricoesNoAnuncio[idUsuario] || [];
 
-  console.log(inscricoesNoAnuncio[idUsuario]);
-
   if (inscricoesNoAnuncio[idUsuario] !== undefined) {
-    return res.status(400).send("Inscrição já existe");
+    const inscricaoExistente = inscricoesNoAnuncio[idUsuario].find(
+      (anuncio) => anuncio.idAnuncio === idAnuncio
+    );
+    if (inscricaoExistente !== undefined) {
+      return res.status(400).send("Inscrição já existe");
+    }
   }
 
   inscricoes.push({
