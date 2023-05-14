@@ -286,4 +286,33 @@ input:checked+.radio-btn {
     .radio-btn p {
         display: none;
     }
+
+    .inner-titulo {
+        background-image: none;
+    }
+
+    .inner-titulo h1 {
+        font-size: 50px;
+    }
+
+    .inner-titulo::after {
+        background-image: none;
+    }
+
+    .anuncio-feed {
+        flex: 0 0 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+}
+
+@media screen and (max-width: 764px) {
+
+    .anuncios-feed {
+        margin-top: 0;
+    }
+
+    .anuncio-feed {
+        flex: 0 0 calc(100% - 1rem);
+        max-width: calc(100% - 1rem);
+    }
 }

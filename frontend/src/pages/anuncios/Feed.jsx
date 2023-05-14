@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import './Feed.css'
 import { Input } from "../../components/Input/Input";
 import "@fortawesome/fontawesome-free/css/all.css";
-import imgAnuncio from "../../images/iconAnuncio.png"
+import { Footer } from "../../components/Input/footer";
 
 export const Feed = () => {
   const { user } = useContext(AuthContext);
@@ -105,7 +105,6 @@ export const Feed = () => {
                     <a href={`/anuncios/anuncio/${anuncio.idAnuncio}`}>
                       <h2>{anuncio.titulo}</h2>
                       <ul>
-                        <li><i className="fa-solid fa-file"></i><p>{anuncio.descricao}</p></li>
                         <li><i className="fa-solid fa-guitar"></i><p>{anuncio.tipo}</p></li>
                         <li><i className="fa-solid fa-location-dot"></i><p>{anuncio.endereco}</p></li>
                         <li><i className="fa-solid fa-dollar-sign"></i><p>{anuncio.pagamento}</p></li>
@@ -125,7 +124,6 @@ export const Feed = () => {
                 <a href={`/anuncios/anuncio/${anuncio.idAnuncio}`}>
                   <h2>{anuncio.titulo}</h2>
                   <ul>
-                    <li><i className="fa-solid fa-file"></i><p>{anuncio.descricao}</p></li>
                     <li><i className="fa-solid fa-guitar"></i><p>{anuncio.tipo}</p></li>
                     <li><i className="fa-solid fa-location-dot"></i><p>{anuncio.endereco}</p></li>
                     <li><i className="fa-solid fa-dollar-sign"></i><p>{anuncio.pagamento}</p></li>
@@ -140,6 +138,7 @@ export const Feed = () => {
           <a href="/novoanuncio" className="mais-anuncio">+</a>
         ) : null}
       </main>
+      <Footer />
     </div >
   );
 };

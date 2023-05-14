@@ -1,0 +1,17 @@
+footer {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: var(--jet);
+    height: 3rem;
+    margin-top: 3rem;
+    bottom: 0;
+    z-index: 999;
+}
+
+footer p {
+    font-weight: 500;
+    color: var(--seasalt);
+}

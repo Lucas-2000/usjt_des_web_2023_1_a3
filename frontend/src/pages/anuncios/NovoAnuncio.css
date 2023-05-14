@@ -131,3 +131,26 @@
 .option-novo-anuncio label i {
     margin: 0 0.5rem 0 0;
 }
+
+@media screen and (max-width: 1330px) {
+    .img-novo-anuncio,
+    .img-novo-anuncio img {
+        display: none;
+    }
+
+    .form-novo-anuncio {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 1064px) {
+    .form-novo-anuncio {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    
+}
