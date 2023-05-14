@@ -30,6 +30,7 @@ export const NovoAnuncio = () => {
                     endereco,
                     pagamento
                 })
+                
             }).then((res) => {
                 if (!res.ok) {
                     return toast.error("Erro na inclusão", {
@@ -41,7 +42,8 @@ export const NovoAnuncio = () => {
                         draggable: true,
                         progress: undefined,
                         theme: "light",
-                    });
+                    }
+                    );
                 }
                 localStorage.setItem("showmsg", "1");
                 return navigate("/anuncios/feed");

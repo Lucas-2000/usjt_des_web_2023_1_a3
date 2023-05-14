@@ -79,8 +79,8 @@ const Anuncio = () => {
             {user.tipo === "A" ? <h1>Anúncio</h1> : <h1>Inscreva-se</h1>}
             <a href="/anuncios/feed">Voltar</a>
           </article>
-          {baseAnuncios.map((anuncios, id) => (
-            <section className="desc-anuncio" key={id}>
+          {baseAnuncios.map((anuncios, idAn) => (
+            <section className="desc-anuncio" key={idAn}>
               {anuncios
                 .filter((anuncio) => {
                   if (anuncio.idAnuncio === id) {
@@ -89,8 +89,8 @@ const Anuncio = () => {
                     return false;
                   }
                 })
-                .map((anuncio, subId) => (
-                  <article className="inner-desc-anuncio" key={subId}>
+                .map((anuncio, subIdAn) => (
+                  <article className="inner-desc-anuncio" key={subIdAn}>
                     <h1>{anuncio.titulo}</h1>
                     <h3>
                       <i className="fa-solid fa-file"></i> Descrição
@@ -120,16 +120,17 @@ const Anuncio = () => {
         </section>
         {user.tipo === "A" ? (
           <section className="tabela-anuncio">
+            <h1>Inscrições</h1>
+            {baseInscricoes.length === 0 ? (
+              <h3>Sem inscrições</h3>
+            ) : (
+              <article className="head-tabela">
+                <p>Veja abaixo todas as inscrições</p>
+              </article>
+            )}
             <table>
               <thead>
-                <h1>Inscrições</h1>
-                {baseInscricoes.length === 0 ? (
-                  <h3>Sem inscrições</h3>
-                ) : (
-                  <article className="head-tabela">
-                    <p>Veja abaixo todas as inscrições</p>
-                  </article>
-                )}
+
                 <tr>
                   <th>Nome</th>
                   <th>Email</th>
