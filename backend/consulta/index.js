@@ -8,17 +8,17 @@ const baseConsulta = {};
 
 const funcoes = {
   UsuarioCriado: (usuario) => {
-    baseConsulta[usuario.idUsuario] = usuario;
+    baseConsulta[usuario.email] = usuario;
   },
   AnuncioCriado: (anuncio) => {
-    const anuncios = baseConsulta[anuncio.idUsuario]["anuncios"] || [];
+    const anuncios = baseConsulta[anuncio.email]["anuncios"] || [];
     anuncios.push(anuncio);
-    baseConsulta[anuncio.idUsuario]["anuncios"] = anuncios;
+    baseConsulta[anuncio.email]["anuncios"] = anuncios;
   },
   InscricaoCriada: (inscricao) => {
-    const inscricoes = baseConsulta[inscricao.idUsuario]["inscricoes"] || [];
+    const inscricoes = baseConsulta[inscricao.email]["inscricoes"] || [];
     inscricoes.push(inscricao);
-    baseConsulta[inscricao.idUsuario]["inscricoes"] = inscricoes;
+    baseConsulta[inscricao.email]["inscricoes"] = inscricoes;
   },
 };
 

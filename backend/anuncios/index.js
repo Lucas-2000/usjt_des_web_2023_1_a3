@@ -19,14 +19,14 @@ app.get("/anuncios", (req, res) => {
   res.status(201).send(anunciosPorUsuario);
 });
 
-app.get("/usuarios/:id/anuncios", (req, res) => {
-  res.status(201).send(anunciosPorUsuario[req.params.id] || []);
+app.get("/usuarios/:email/anuncios", (req, res) => {
+  res.status(201).send(anunciosPorUsuario[req.params.email] || []);
 });
 
-app.post("/usuarios/:id/anuncios", async (req, res) => {
+app.post("/usuarios/:email/anuncios", async (req, res) => {
   const idAnuncio = uuidv4();
   const { titulo, descricao, tipo, endereco, pagamento } = req.body;
-  const anuncios = anunciosPorUsuario[req.params.id] || [];
+  const anuncios = anunciosPorUsuario[req.params.email] || [];
   anuncios.push({
     idAnuncio,
     titulo,
@@ -34,9 +34,9 @@ app.post("/usuarios/:id/anuncios", async (req, res) => {
     tipo,
     endereco,
     pagamento,
-    idUsuario: req.params.id,
+    email: req.params.email,
   });
-  anunciosPorUsuario[req.params.id] = anuncios;
+  anunciosPorUsuario[req.params.email] = anuncios;
 
   try {
     await axios.post("http://localhost:10000/eventos", {
@@ -48,7 +48,7 @@ app.post("/usuarios/:id/anuncios", async (req, res) => {
         tipo,
         endereco,
         pagamento,
-        idUsuario: req.params.id,
+        email: req.params.email,
       },
     });
 

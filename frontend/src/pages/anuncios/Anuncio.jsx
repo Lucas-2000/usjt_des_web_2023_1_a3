@@ -34,13 +34,12 @@ const Anuncio = () => {
   }
   function criarInscricao() {
     try {
-      fetch(`http://localhost:7000/usuarios/${user.id}/inscricoes`, {
+      fetch(`http://localhost:7000/usuarios/${user.email}/inscricoes`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
           idAnuncio: id,
           nome: user.nome,
-          email: user.email,
         }),
       }).then((res) => {
         if (!res.ok) {
@@ -130,7 +129,6 @@ const Anuncio = () => {
             )}
             <table>
               <thead>
-
                 <tr>
                   <th>Nome</th>
                   <th>Email</th>

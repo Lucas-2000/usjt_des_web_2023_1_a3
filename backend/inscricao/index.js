@@ -19,18 +19,18 @@ app.get("/inscricoes", (req, res) => {
   res.status(201).send(inscricoesNoAnuncio);
 });
 
-app.get("/usuarios/:idUsuario/inscricoes", (req, res) => {
-  res.status(201).send(inscricoesNoAnuncio[req.params.idUsuario] || []);
+app.get("/usuarios/:email/inscricoes", (req, res) => {
+  res.status(201).send(inscricoesNoAnuncio[req.params.email] || []);
 });
 
-app.post("/usuarios/:idUsuario/inscricoes", async (req, res) => {
+app.post("/usuarios/:email/inscricoes", async (req, res) => {
   const idInscricao = uuidv4();
-  const { idAnuncio, nome, email } = req.body;
-  const { idUsuario } = req.params;
-  const inscricoes = inscricoesNoAnuncio[idUsuario] || [];
+  const { idAnuncio, nome } = req.body;
+  const { email } = req.params;
+  const inscricoes = inscricoesNoAnuncio[email] || [];
 
-  if (inscricoesNoAnuncio[idUsuario] !== undefined) {
-    const inscricaoExistente = inscricoesNoAnuncio[idUsuario].find(
+  if (inscricoesNoAnuncio[email] !== undefined) {
+    const inscricaoExistente = inscricoesNoAnuncio[email].find(
       (anuncio) => anuncio.idAnuncio === idAnuncio
     );
     if (inscricaoExistente !== undefined) {
@@ -41,11 +41,10 @@ app.post("/usuarios/:idUsuario/inscricoes", async (req, res) => {
   inscricoes.push({
     idInscricao,
     idAnuncio,
-    idUsuario,
-    nome,
     email,
+    nome,
   });
-  inscricoesNoAnuncio[idUsuario] = inscricoes;
+  inscricoesNoAnuncio[email] = inscricoes;
 
   try {
     await axios.post("http://localhost:10000/eventos", {
@@ -53,7 +52,6 @@ app.post("/usuarios/:idUsuario/inscricoes", async (req, res) => {
       dados: {
         idInscricao,
         idAnuncio,
-        idUsuario,
         nome,
         email,
       },
