@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 import "./cadastro.css";
 import imgCadastro from "../../images/imgCadastro.jpg";
 import { Input } from "../../components/Input/Input";
+import { LinkButton } from "../../components/Buttons/LinkButton";
+import { SubmitButton } from "../../components/Buttons/SubmitButton";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 export const Cadastro = () => {
@@ -101,12 +103,13 @@ export const Cadastro = () => {
         <div className="form-cadastro">
           <div className="header-cadastro">
             <h1>Faça seu cadastro</h1>
-            <a href="/">Entrar</a>
+            <LinkButton class="link-button dark" linkTo="/" value="Entrar" />
           </div>
           <form onSubmit={handleSubmitForm}>
             <div className="group-cadastro">
               <Input
                 className="input text-cadastro"
+                placeholder="Nome Completo..."
                 type="text"
                 icon="fa-solid fa-user"
                 label="Nome"
@@ -114,6 +117,7 @@ export const Cadastro = () => {
               />
               <Input
                 className="input text-cadastro"
+                placeholder="email@exemplo.com"
                 type="email"
                 icon="fa-solid fa-envelope"
                 label="E-mail"
@@ -121,6 +125,7 @@ export const Cadastro = () => {
               />
               <Input
                 className="input text-cadastro"
+                placeholder="########"
                 type="password"
                 icon="fa-solid fa-lock"
                 label="Senha"
@@ -159,6 +164,7 @@ export const Cadastro = () => {
                     </label>
                     <textarea
                       cols="30"
+                      placeholder="Como são os seus eventos..."
                       rows="5"
                       onChange={(e) => setBiografia(e.target.value)}
                       required
@@ -174,6 +180,7 @@ export const Cadastro = () => {
                     <textarea
                       cols="30"
                       rows="2"
+                      placeholder="Qual a sua história na música..."
                       onChange={(e) => setBiografia(e.target.value)}
                       required
                     ></textarea>
@@ -197,6 +204,7 @@ export const Cadastro = () => {
                   </div>
                   <Input
                     className="input text-cadastro"
+                    placeholder="Quais os dias e horários..."
                     type="text"
                     icon="fa-solid fa-calendar"
                     label="Disponibilidade"
@@ -204,17 +212,16 @@ export const Cadastro = () => {
                   />
                   <Input
                     className="input text-cadastro"
-                    type="text"
+                    placeholder="Um pouco do seu trabalho..."
+                    type="url"
                     icon="fa-solid fa-video"
                     label="URL Video"
                     onChange={(e) => setLink(e.target.value)}
                   />
                 </>
               )}
-              <div className="submit-cadastro">
-                <input type="submit" value="Cadastrar" />
-              </div>
             </div>
+            <SubmitButton class="submit-button dark" value="Cadastrar" />
           </form>
         </div>
       </main>

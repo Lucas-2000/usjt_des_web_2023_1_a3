@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import imgNovoAnuncio from "../../images/imgNovoAnuncio.jpeg";
 import { Input } from "../../components/Input/Input";
+import { LinkButton } from "../../components/Buttons/LinkButton";
+import { SubmitButton } from "../../components/Buttons/SubmitButton";
 import "./NovoAnuncio.css";
 
 export const NovoAnuncio = () => {
@@ -60,12 +62,13 @@ export const NovoAnuncio = () => {
         <div className="form-novo-anuncio">
           <div className="header-novo-anuncio">
             <h1>Crie seu novo evento</h1>
-            <a href="/anuncios/feed">Voltar</a>
+            <LinkButton class="link-button dark" linkTo="/anuncios/feed" value="Voltar" />
           </div>
           <form onSubmit={handleSubmitForm}>
             <div className="group-novo-anuncio">
               <Input
                 className="input text-login"
+                placeholder="Nome do evento..."
                 type="text"
                 icon="fa-solid fa-user"
                 label="Titulo"
@@ -79,11 +82,13 @@ export const NovoAnuncio = () => {
                   cols="30"
                   rows="2"
                   onChange={(e) => setDescricao(e.target.value)}
+                  placeholder="Quais os requisitos e o publico do evento..."
                   required
                 ></textarea>
               </div>
               <Input
                 className="input text-login"
+                placeholder="Rua, número e CEP..."
                 type="text"
                 icon="fa-solid fa-location-dot"
                 label="Endereço"
@@ -105,15 +110,14 @@ export const NovoAnuncio = () => {
               </div>
               <Input
                 className="input text-cadastro"
-                type="text"
+                placeholder="00,00"
+                type="number"
                 icon="fa-solid fa-dollar-sign"
                 label="Pagamento"
                 onChange={(e) => setPagamento(e.target.value)}
               />
             </div>
-            <div className="submit-novo-anuncio">
-              <input type="submit" value="Criar" />
-            </div>
+            <SubmitButton class="submit-button dark" value="Criar" />
           </form>
         </div>
       </main>

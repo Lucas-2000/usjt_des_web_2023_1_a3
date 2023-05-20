@@ -1,0 +1,79 @@
+.anuncio-feed {
+    flex: 0 0 calc(33.3% - 1rem);
+    max-width: calc(33.3% - 1rem);
+    width: 100%;
+    background: var(--seasalt);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-box);
+    color: var(--jet);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.anuncio-feed:hover h2,
+.anuncio-feed:hover p {
+    color: white;
+}
+
+.anuncio-feed:hover h2::after {
+    background: var(--yellow);
+}
+
+.anuncio-feed h2 {
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    color: var(--jet);
+    margin-bottom: 0.5rem;
+    z-index: 999;
+}
+
+.anuncio-feed h2::after {
+    content: '';
+    display: block;
+    width: 45%;
+    height: 0.3rem;
+    background: var(--turquoise);
+    margin: 0 auto;
+    position: absolute;
+}
+
+.anuncio-feed li {
+    margin: 0.1rem;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    z-index: 999;
+}
+
+.anuncio-feed i {
+    padding: 0.2rem;
+    color: var(--yellow);
+    z-index: 999;
+}
+
+.anuncio-feed p {
+    z-index: 999;
+    color: var(--jet);
+}
+
+.bg-anuncio {
+    height: 128px;
+    width: 128px;
+    background-color: var(--turquoise);
+    border-radius: 50%;
+    z-index: 0;
+    position: absolute;
+    top: -75px;
+    right: -55px;
+    transition: all 0.3s ease-in-out;
+}
+
+.anuncio-feed:hover .bg-anuncio {
+    transform: scale(10);
+}

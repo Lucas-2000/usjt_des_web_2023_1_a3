@@ -106,7 +106,9 @@ input:checked+.radio-btn {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    min-height: 80vh;
     border-radius: 5px;
+    position: relative;
 }
 
 
@@ -172,7 +174,6 @@ input:checked+.radio-btn {
     justify-content: center;
     align-items: center;
     width: 70%;
-
 }
 
 .anuncios-all-feed {

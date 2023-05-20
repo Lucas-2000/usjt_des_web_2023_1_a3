@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import { useParams } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import imgAnuncio from "../../images/imgAnuncio.jpg";
+import { LinkButton } from "../../components/Buttons/LinkButton";
+import { SubmitButton } from "../../components/Buttons/SubmitButton";
 import "./Anuncio.css";
 
 const Anuncio = () => {
@@ -32,7 +34,9 @@ const Anuncio = () => {
   for (let [id, colecao] of Object.entries(anuncio)) {
     baseAnuncios.push(colecao);
   }
-  function criarInscricao() {
+  function criarInscricao(e) {
+    e.preventDefault()
+
     try {
       fetch(`http://localhost:7000/usuarios/${user.email}/inscricoes`, {
         method: "POST",
@@ -76,7 +80,7 @@ const Anuncio = () => {
         <section className="form-anuncio">
           <article className="header-anuncio">
             {user.tipo === "A" ? <h1>Anúncio</h1> : <h1>Inscreva-se</h1>}
-            <a href="/anuncios/feed">Voltar</a>
+            <LinkButton className="link-button dark" linkTo="/anuncios/feed" value="Voltar" />
           </article>
           {baseAnuncios.map((anuncios, idAn) => (
             <section className="desc-anuncio" key={idAn}>
@@ -113,7 +117,9 @@ const Anuncio = () => {
           ))}
           {user.tipo === "M" ? (
             <div className="submit-anuncio">
-              <button onClick={criarInscricao}>Me Candidatar</button>
+              <form onSubmit={criarInscricao}>
+                <SubmitButton class="submit-button dark" value="Me inscrever" />
+              </form>
             </div>
           ) : null}
         </section>

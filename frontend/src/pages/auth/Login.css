@@ -44,25 +44,6 @@
     justify-content: space-between;
 }
 
-.submit-login input,
-.header-login a {
-    font-size: 1rem;
-    border: none;
-    display: flex;
-    align-items: center;
-    background: var(--jet);
-    padding: 0.4rem 1rem;
-    border-radius: 5px;
-    color: var(--seasalt);
-    cursor: pointer;
-    transition: background 0.3s ease 0s;
-}
-
-.submit-login input:hover,
-.header-login a:hover {
-    background: var(--turquoise);
-}
-
 .header-login h1 {
     position: relative;
 }

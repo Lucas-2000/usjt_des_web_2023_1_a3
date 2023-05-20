@@ -5,6 +5,8 @@ import { AuthContext } from "../../context/AuthContext";
 import imgLogin from "../../images/imgLogin.jpg";
 import "./Login.css";
 import { Input } from "../../components/Input/Input";
+import { LinkButton } from "../../components/Buttons/LinkButton";
+import { SubmitButton } from "../../components/Buttons/SubmitButton";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -83,12 +85,13 @@ export const Login = () => {
         <div className="form-login">
           <div className="header-login">
             <h1>Login</h1>
-            <a href="/cadastrar">Cadastre-se</a>
+            <LinkButton class="link-button dark" linkTo="/cadastrar" value="Cadastre-se" />
           </div>
           <form onSubmit={handleSubmitForm}>
             <div className="group-login">
               <Input
                 className="input text-login"
+                placeholder="email@exemplo.com"
                 type="email"
                 icon="fa-solid fa-envelope"
                 label="E-mail"
@@ -96,14 +99,13 @@ export const Login = () => {
               />
               <Input
                 className="input text-login"
+                placeholder="######"
                 type="password"
                 icon="fa-solid fa-lock"
                 label="Senha"
                 onChange={(e) => setSenha(e.target.value)}
               />
-              <div className="submit-login">
-                <input type="submit" value="Login" />
-              </div>
+              <SubmitButton class="submit-button dark" value="Login"/>
             </div>
           </form>
         </div>

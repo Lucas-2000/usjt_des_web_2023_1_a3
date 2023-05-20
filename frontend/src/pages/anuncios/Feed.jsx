@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthContext";
 import "./Feed.css";
 import { Input } from "../../components/Input/Input";
+import { Card } from "../../components/Card/Card"
 import "@fortawesome/fontawesome-free/css/all.css";
-import { Footer } from "../../components/Input/footer";
 
 export const Feed = () => {
   const { user } = useContext(AuthContext);
@@ -115,44 +115,32 @@ export const Feed = () => {
         {todos === "T" ? (
           <section className="anuncios-feed">
             {baseAnuncios.length === 0 && <p>Sem anúncios no feed</p>}
-            {baseAnuncios.map((anuncios, id) => (
-              <article key={id} className="anuncios-all-feed">
-                {anuncios
-                  .filter((anuncio) => {
-                    if (search === "") {
-                      return anuncio;
-                    } else if (
-                      anuncio.titulo
-                        .toLowerCase()
-                        .includes(search.toLowerCase())
-                    ) {
-                      return anuncio;
-                    }
-                  })
-                  .map((anuncio, subId) => (
-                    <div key={subId} className="anuncio-feed">
-                      <a href={`/anuncios/anuncio/${anuncio.idAnuncio}`}>
-                        <h2>{anuncio.titulo}</h2>
-                        <ul>
-                          <li>
-                            <i className="fa-solid fa-guitar"></i>
-                            <p>{anuncio.tipo}</p>
-                          </li>
-                          <li>
-                            <i className="fa-solid fa-location-dot"></i>
-                            <p>{anuncio.endereco}</p>
-                          </li>
-                          <li>
-                            <i className="fa-solid fa-dollar-sign"></i>
-                            <p>{anuncio.pagamento}</p>
-                          </li>
-                        </ul>
-                        <div className="bg-anuncio"></div>
-                      </a>
-                    </div>
-                  ))}
-              </article>
-            ))}
+            <article className="anuncios-all-feed">
+              {baseAnuncios.map((anuncios) => (
+                <>
+                  {anuncios
+                    .filter((anuncio) => {
+                      if (search === "") {
+                        return anuncio;
+                      } else if (
+                        anuncio.titulo
+                          .toLowerCase()
+                          .includes(search.toLowerCase())
+                      ) {
+                        return anuncio;
+                      }
+                    })
+                    .map((anuncio, subId) => (
+                      <Card
+                        key={subId} linkTo={`/anuncios/anuncio/${anuncio.idAnuncio}`}
+                        titulo={anuncio.titulo}
+                        tipo={anuncio.tipo}
+                        endereco={anuncio.endereco}
+                        pagamento={anuncio.pagamento} />
+                    ))}
+                </>
+              ))}
+            </article>
           </section>
         ) : (
           <section className="anuncios-feed">
@@ -168,26 +156,12 @@ export const Feed = () => {
                 }
               })
               .map((anuncio, id) => (
-                <article key={id} className="anuncio-feed">
-                  <a href={`/anuncios/anuncio/${anuncio.idAnuncio}`}>
-                    <h2>{anuncio.titulo}</h2>
-                    <ul>
-                      <li>
-                        <i className="fa-solid fa-guitar"></i>
-                        <p>{anuncio.tipo}</p>
-                      </li>
-                      <li>
-                        <i className="fa-solid fa-location-dot"></i>
-                        <p>{anuncio.endereco}</p>
-                      </li>
-                      <li>
-                        <i className="fa-solid fa-dollar-sign"></i>
-                        <p>{anuncio.pagamento}</p>
-                      </li>
-                    </ul>
-                    <div className="bg-anuncio"></div>
-                  </a>
-                </article>
+                <Card
+                  key={id} linkTo={`/anuncios/anuncio/${anuncio.idAnuncio}`}
+                  titulo={anuncio.titulo}
+                  tipo={anuncio.tipo}
+                  endereco={anuncio.endereco}
+                  pagamento={anuncio.pagamento} />
               ))}
           </section>
         )}
@@ -197,7 +171,6 @@ export const Feed = () => {
           </a>
         ) : null}
       </main>
-      <Footer />
     </div>
   );
 };

@@ -1,0 +1,24 @@
+.link-button {
+    font-size: 1rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease 0s;
+}
+
+.light {
+    background: var(--seasalt);
+    color: var(--jet);
+}
+
+.dark {
+    background: var(--jet);
+    color: var(--seasalt);
+}
+
+.dark:hover {
+    background: var(--turquoise);
+}

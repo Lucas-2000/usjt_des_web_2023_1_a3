@@ -42,25 +42,6 @@
     justify-content: space-between;
 }
 
-.submit-cadastro input,
-.header-cadastro a {
-    font-size: 1rem;
-    border: none;
-    display: flex;
-    align-items: center;
-    background: var(--jet);
-    padding: 0.4rem 1rem;
-    border-radius: 5px;
-    color: var(--seasalt);
-    cursor: pointer;
-    transition: background 0.3s ease 0s;
-}
-
-.submit-cadastro input:hover,
-.header-cadastro a:hover {
-    background: var(--turquoise);
-}
-
 .header-cadastro h1 {
     position: relative;
 }
@@ -156,6 +137,7 @@
 }
 
 @media screen and (max-width: 1330px) {
+
     .img-cadastro,
     .img-cadastro img {
         display: none;

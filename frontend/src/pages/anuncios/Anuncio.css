@@ -133,7 +133,7 @@
 }
 
 .header-anuncio a,
-.submit-anuncio button {
+.submit-anuncio input {
     font-size: 1rem;
     border: none;
     display: flex;
