@@ -136,11 +136,21 @@
     align-items: center;
 }
 
-@media screen and (max-width: 1330px) {
+@media screen and (max-width: 1550px) {
 
     .img-cadastro,
     .img-cadastro img {
         display: none;
+    }
+
+    .cadastro {
+        height: auto;
+        min-height: 100vh;
+        padding: 1rem;
+    }
+
+    .main-cadastro {
+        height: auto;
     }
 
     .form-cadastro {
@@ -157,8 +167,22 @@
         flex-direction: column;
     }
 
+    .cadastro {
+        height: auto;
+        min-height: 100vh;
+        padding: 1rem;
+    }
+
+    .main-cadastro {
+        height: auto;
+    }
+
     .radio-cadastro {
         display: flex;
         flex-direction: column;
+    }
+
+    .option-cadastro {
+        width: 100%;
     }
 }
